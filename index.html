@@ -33,15 +33,21 @@ h1 span{background:linear-gradient(90deg,var(--a),var(--b),var(--c));-webkit-bac
 .note{font-size:13px;color:var(--mut);margin-top:14px}
 /* phone */
 .phone{width:min(290px,78vw);aspect-ratio:9/19;margin:auto;border-radius:42px;background:#000;border:8px solid #1c1c26;position:relative;overflow:hidden;box-shadow:0 40px 80px #0009,0 0 0 1px #ffffff12}
-.scene{position:absolute;inset:0;width:100%;height:100%}
-.scene .eyes{transform-origin:137px 255px;animation:blinkE 4.5s infinite}
-@keyframes blinkE{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
-.scene .mouth{transform-origin:138px 305px;animation:talk .9s infinite}
-@keyframes talk{0%,100%{transform:scaleY(1)}30%{transform:scaleY(.55)}60%{transform:scaleY(1.25)}}
-.scene .wave{transform-origin:232px 450px;animation:wv 2.6s ease-in-out infinite}
-@keyframes wv{0%,100%{transform:rotate(0)}25%{transform:rotate(-12deg)}50%{transform:rotate(6deg)}75%{transform:rotate(-8deg)}}
-.scene .brow{animation:br 4.5s infinite}@keyframes br{0%,40%,100%{transform:translateY(0)}48%{transform:translateY(-3px)}}
-@media(prefers-reduced-motion:reduce){.scene *{animation:none!important}}
+.shot{position:absolute;inset:0;overflow:hidden;background:#2a2230}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;animation:kb 14s ease-in-out infinite alternate;filter:saturate(1.05) contrast(1.03)}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.12) translateY(-2%)}}
+.shot:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45),transparent 26%,transparent 62%,rgba(0,0,0,.6))}
+.fbox{position:absolute;left:27%;top:20%;width:46%;height:30%;animation:fb 3s ease-in-out infinite}
+.fbox i{position:absolute;width:18px;height:18px;border:3px solid #5fe0a8}
+.fbox i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0;border-radius:8px 0 0 0}.fbox i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0;border-radius:0 8px 0 0}
+.fbox i:nth-child(3){bottom:0;left:0;border-right:0;border-top:0;border-radius:0 0 0 8px}.fbox i:nth-child(4){bottom:0;right:0;border-left:0;border-top:0;border-radius:0 0 8px 0}
+.fbox em{position:absolute;top:-24px;left:50%;transform:translateX(-50%);white-space:nowrap;font:700 11px Rubik,system-ui,sans-serif;font-style:normal;color:#0b1a14;background:#5fe0a8;border-radius:99px;padding:3px 8px}
+@keyframes fb{50%{transform:translate(2px,-3px) scale(1.02)}}
+.wave{position:absolute;bottom:17%;left:50%;transform:translateX(-50%);display:flex;gap:4px;align-items:center;height:24px}
+.wave b{width:4px;border-radius:2px;background:#fff;opacity:.9;animation:wv 1s ease-in-out infinite}
+.wave b:nth-child(2){animation-delay:.1s}.wave b:nth-child(3){animation-delay:.25s}.wave b:nth-child(4){animation-delay:.05s}.wave b:nth-child(5){animation-delay:.3s}.wave b:nth-child(6){animation-delay:.15s}.wave b:nth-child(7){animation-delay:.2s}
+@keyframes wv{0%,100%{height:5px}50%{height:22px}}
+@media(prefers-reduced-motion:reduce){.shot img,.fbox,.wave b{animation:none!important}}
 .ring{position:absolute;top:-40px;left:50%;width:150%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;box-shadow:inset 0 0 60px #ffe9d644;pointer-events:none}
 
 .body{position:absolute;left:50%;top:62%;width:80%;height:50%;transform:translateX(-50%);border-radius:45% 45% 0 0;background:#2b2440}
@@ -62,9 +68,14 @@ h2{font-size:clamp(28px,4vw,40px);font-weight:900;letter-spacing:-.01em;margin-b
 .card h3{font-size:19px;margin-bottom:6px}
 .card p{color:var(--mut);font-size:15px}
 .rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.room{border-radius:20px;padding:20px;border:1px solid var(--line);background:linear-gradient(160deg,hsl(var(--h) 80% 55% / .22),#11111a 70%)}
-.room b{display:block;font-size:18px;margin:6px 0 4px}
-.room span{color:var(--mut);font-size:14px}
+.room{position:relative;overflow:hidden;border-radius:24px;padding:22px;min-height:190px;display:flex;flex-direction:column;border:1px solid hsl(var(--h) 80% 60% / .28);background:radial-gradient(120% 90% at 100% 0%,hsl(var(--h) 90% 58% / .45),transparent 55%),radial-gradient(90% 80% at 0% 100%,hsl(var(--h2) 90% 55% / .28),transparent 60%),#12111a;box-shadow:inset 0 1px 0 #ffffff14,0 18px 40px #0005;transition:transform .25s,box-shadow .25s}
+.room:hover{transform:translateY(-4px);box-shadow:inset 0 1px 0 #ffffff1f,0 26px 60px hsl(var(--h) 90% 40% / .35)}
+.room:before{content:"";position:absolute;inset:-40% -40% auto auto;width:180px;height:180px;border-radius:50%;background:hsl(var(--h) 90% 60% / .18);filter:blur(10px)}
+.ric{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,hsl(var(--h) 90% 60%),hsl(var(--h2) 85% 50%));box-shadow:0 10px 24px hsl(var(--h) 90% 45% / .45);margin-bottom:auto}
+.ric svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.room b{display:block;font-size:20px;font-weight:800;margin:18px 0 4px}
+.room .rd{color:#c9c6d6;font-size:14px}
+.room .rt{align-self:flex-start;margin-top:12px;font-size:12px;font-weight:700;padding:5px 10px;border-radius:99px;background:#ffffff12;border:1px solid #ffffff1f;color:#fff}
 .who{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .who .card{position:relative}
 .who .n{position:absolute;top:18px;inset-inline-end:20px;font-size:40px;font-weight:900;color:#ffffff10}
@@ -108,58 +119,9 @@ html[lang=he] [data-l=he],html[lang=en] [data-l=en]{display:revert}
     <p class="note"><span data-l="he">עובד באייפון ובאנדרואיד, ישר מהדפדפן.</span><span data-l="en">Works on iPhone and Android, right in the browser.</span></p>
   </div>
   <div class="phone" aria-hidden="true">
-    <svg class="scene" viewBox="0 0 270 570" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b2d4f"/><stop offset=".6" stop-color="#2a2138"/><stop offset="1" stop-color="#17131f"/></linearGradient>
-        <radialGradient id="glow" cx=".5" cy=".38" r=".55"><stop offset="0" stop-color="#ffd9b8" stop-opacity=".35"/><stop offset="1" stop-color="#ffd9b8" stop-opacity="0"/></radialGradient>
-        <radialGradient id="skin" cx=".45" cy=".4" r=".7"><stop offset="0" stop-color="#f3c4a2"/><stop offset=".7" stop-color="#e0a47f"/><stop offset="1" stop-color="#c9876a"/></radialGradient>
-        <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a2418"/><stop offset="1" stop-color="#1c110c"/></linearGradient>
-        <linearGradient id="top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff5f7e"/><stop offset="1" stop-color="#c2335a"/></linearGradient>
-        <radialGradient id="bok" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
-      </defs>
-      <rect width="270" height="570" fill="url(#wall)"/>
-      <rect x="18" y="70" width="70" height="120" rx="6" fill="#ffffff0d"/><rect x="26" y="78" width="54" height="104" rx="4" fill="#7c5cff22"/>
-      <path d="M200 150q20-40 40-10q-15 5-18 30z" fill="#3f7a5a"/><path d="M215 165q30-30 45 5q-20 0-25 20z" fill="#4f9a6f"/><rect x="214" y="185" width="34" height="40" rx="6" fill="#c98a5a"/>
-      <circle cx="60" cy="300" r="26" fill="url(#bok)"/><circle cx="235" cy="260" r="18" fill="url(#bok)"/><circle cx="40" cy="420" r="14" fill="url(#bok)"/>
-      <ellipse cx="135" cy="230" rx="150" ry="190" fill="url(#glow)"/>
-      <!-- body -->
-      <g transform="translate(0 -30)"><path d="M30 570 C34 450 70 405 135 398 C200 405 236 450 240 570 Z" fill="url(#top)"/>
-      <path d="M105 400 Q135 438 165 400 L160 392 Q135 420 110 392 Z" fill="#a52b4c"/><rect x="30" y="560" width="210" height="40" fill="#c2335a"/></g>
-      <!-- hair back -->
-      <path d="M72 250 C60 150 110 112 140 114 C190 116 214 160 206 250 C206 300 214 350 222 372 C190 388 170 360 168 340 L100 340 C98 362 78 388 48 372 C62 340 74 300 72 250Z" fill="url(#hair)"/>
-      <rect x="118" y="315" width="36" height="58" rx="15" fill="#d6977a"/>
-      <!-- face -->
-      <ellipse cx="137" cy="262" rx="58" ry="72" fill="url(#skin)"/>
-      <ellipse cx="80" cy="268" rx="9" ry="15" fill="#d9997a"/><ellipse cx="194" cy="268" rx="9" ry="15" fill="#d9997a"/>
-      <circle cx="194" cy="285" r="3" fill="#ffd27a"/>
-      <!-- hair front -->
-      <path d="M78 240 C80 170 130 150 160 162 C150 190 120 205 82 250Z" fill="url(#hair)"/>
-      <path d="M150 160 C185 160 205 195 198 245 C190 215 175 195 150 185Z" fill="url(#hair)"/>
-      <!-- brows -->
-      <path class="brow" d="M100 236 Q114 228 127 234" stroke="#2b1a12" stroke-width="4" fill="none" stroke-linecap="round"/>
-      <path class="brow" d="M148 234 Q161 228 175 236" stroke="#2b1a12" stroke-width="4" fill="none" stroke-linecap="round"/>
-      <!-- eyes -->
-      <g class="eyes"><ellipse cx="114" cy="255" rx="9" ry="7" fill="#fff"/><ellipse cx="161" cy="255" rx="9" ry="7" fill="#fff"/>
-      <circle cx="115" cy="255" r="5" fill="#4a2c1c"/><circle cx="162" cy="255" r="5" fill="#4a2c1c"/>
-      <circle cx="116.5" cy="253" r="1.6" fill="#fff"/><circle cx="163.5" cy="253" r="1.6" fill="#fff"/></g>
-      <!-- nose & cheeks -->
-      <path d="M137 262 Q133 282 138 287 Q143 288 146 285" stroke="#b97458" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-      <ellipse cx="103" cy="285" rx="12" ry="7" fill="#ff7f8f" opacity=".28"/><ellipse cx="172" cy="285" rx="12" ry="7" fill="#ff7f8f" opacity=".28"/>
-      <!-- mouth -->
-      <g class="mouth"><path d="M118 303 Q138 322 158 303 Q138 310 118 303Z" fill="#8e2f3a"/><path d="M123 305 Q138 311 153 305 L152 307 Q138 312 124 307Z" fill="#fff"/></g>
-      <!-- waving hand -->
-      <g class="wave">
-        <path d="M232 440 C228 410 226 395 232 370" stroke="url(#top)" stroke-width="34" stroke-linecap="round" fill="none"/>
-        <g transform="translate(232 330)">
-          <rect x="-22" y="-8" width="44" height="46" rx="18" fill="#e9b08c"/>
-          <rect x="-21" y="-46" width="10" height="44" rx="5" fill="#e9b08c"/>
-          <rect x="-9" y="-56" width="10" height="54" rx="5" fill="#e9b08c"/>
-          <rect x="3" y="-52" width="10" height="50" rx="5" fill="#e9b08c"/>
-          <rect x="15" y="-40" width="9" height="40" rx="4.5" fill="#e9b08c"/>
-          <rect x="-36" y="0" width="12" height="30" rx="6" fill="#e9b08c" transform="rotate(-38 -30 15)"/>
-        </g>
-      </g>
-    </svg>
+    <div class="shot"><img src="https://images.unsplash.com/photo-1662850886700-4ec19bd30d11?auto=format&fit=crop&crop=faces&w=640&h=1350&q=78" alt="" loading="eager"></div>
+    <div class="fbox"><i></i><i></i><i></i><i></i><em data-l="he">פנים ✓ במרכז</em><em data-l="en">Face ✓ centered</em></div>
+    <div class="wave"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
     <div class="rec">● REC</div>
     <div class="prompt"><span data-l="he">הדירה הזאת <em>תשנה</em> לכם את החיים</span><span data-l="en">This home will <em>change</em> your life</span></div>
     <div class="tag">₪2.4M</div>
@@ -181,12 +143,12 @@ html[lang=he] [data-l=he],html[lang=en] [data-l=en]{display:revert}
   <h2><span data-l="he">חדר לכל מקצוע</span><span data-l="en">A room for every craft</span></h2>
   <p class="lead"><span data-l="he">כל חדר יודע מה אתם צריכים ועושה את זה לבד בזמן הצילום.</span><span data-l="en">Each room knows what you need and does it automatically while you film.</span></p>
   <div class="rooms">
-    <div class="room" style="--h:4">🎬<b><span data-l="he">יוצרים</span><span data-l="en">Creators</span></b><span><span data-l="he">הוק, כותרות וזום אוטומטי</span><span data-l="en">Hook, titles, auto punch-in</span></span></div>
-    <div class="room" style="--h:150">🛍️<b><span data-l="he">מכירות ולייב</span><span data-l="en">Sales &amp; live</span></b><span><span data-l="he">מחיר, קופון ו"נמכר!" קופצים לבד</span><span data-l="en">Price, coupon and "Sold!" pop in</span></span></div>
-    <div class="room" style="--h:52">💪<b><span data-l="he">כושר</span><span data-l="en">Fitness</span></b><span><span data-l="he">טיימר שמתחיל לבד בכל תרגיל</span><span data-l="en">Timer starts itself per exercise</span></span></div>
-    <div class="room" style="--h:28">🍳<b><span data-l="he">מטבח</span><span data-l="en">Kitchen</span></b><span><span data-l="he">מתכון צעד-צעד, ידיים מלוכלכות זה בסדר</span><span data-l="en">Step-by-step, messy hands welcome</span></span></div>
-    <div class="room" style="--h:210">🎓<b><span data-l="he">מרצים ומומחים</span><span data-l="en">Experts</span></b><span><span data-l="he">שקופיות, נקודות ופס התקדמות</span><span data-l="en">Key points and progress bar</span></span></div>
-    <div class="room" style="--h:280">🎵<b><span data-l="he">מוזיקה</span><span data-l="en">Music</span></b><span><span data-l="he">מתופפים באוויר, לופר בקצב</span><span data-l="en">Drum in the air, beat-synced looper</span></span></div>
+    <div class="room" style="--h:4;--h2:350"><div class="ric"><svg viewBox="0 0 24 24"><path d="M3 7h12v10H3z"/><path d="M15 10l6-3v10l-6-3"/></svg></div><b><span data-l="he">יוצרים</span><span data-l="en">Creators</span></b><span class="rd"><span data-l="he">הוק, כותרות וזום אוטומטי</span><span data-l="en">Hook, titles, auto punch-in</span></span><span class="rt"><span data-l="he">⚡ זום בכל קטע</span><span data-l="en">⚡ Auto zoom</span></span></div>
+    <div class="room" style="--h:150;--h2:190"><div class="ric"><svg viewBox="0 0 24 24"><path d="M3 12l9-9h9v9l-9 9z"/><circle cx="16" cy="8" r="1.6"/></svg></div><b><span data-l="he">מכירות ולייב</span><span data-l="en">Sales &amp; live</span></b><span class="rd"><span data-l="he">מחיר, קופון ו"נמכר!" קופצים לבד</span><span data-l="en">Price, coupon and "Sold!" pop in</span></span><span class="rt"><span data-l="he">⚡ ₪ על המסך</span><span data-l="en">⚡ Price on screen</span></span></div>
+    <div class="room" style="--h:52;--h2:20"><div class="ric"><svg viewBox="0 0 24 24"><path d="M6 8v8M3 10v4M18 8v8M21 10v4M6 12h12"/></svg></div><b><span data-l="he">כושר</span><span data-l="en">Fitness</span></b><span class="rd"><span data-l="he">טיימר שמתחיל לבד בכל תרגיל</span><span data-l="en">Timer starts itself per exercise</span></span><span class="rt"><span data-l="he">⚡ 0:30 ⏱</span><span data-l="en">⚡ 0:30 ⏱</span></span></div>
+    <div class="room" style="--h:28;--h2:340"><div class="ric"><svg viewBox="0 0 24 24"><path d="M6 13a4 4 0 1 1 2-7.5A4.5 4.5 0 0 1 16 5a4 4 0 1 1 2 8v6H6z"/><path d="M6 16h12"/></svg></div><b><span data-l="he">מטבח</span><span data-l="en">Kitchen</span></b><span class="rd"><span data-l="he">מתכון צעד-צעד, ידיים מלוכלכות זה בסדר</span><span data-l="en">Step-by-step, messy hands welcome</span></span><span class="rt"><span data-l="he">⚡ שלב 2/5</span><span data-l="en">⚡ Step 2/5</span></span></div>
+    <div class="room" style="--h:210;--h2:260"><div class="ric"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg></div><b><span data-l="he">מרצים ומומחים</span><span data-l="en">Experts</span></b><span class="rd"><span data-l="he">נקודות מפתח ופס התקדמות</span><span data-l="en">Key points and progress bar</span></span><span class="rt"><span data-l="he">⚡ נקודה 3</span><span data-l="en">⚡ Point 3</span></span></div>
+    <div class="room" style="--h:280;--h2:320"><div class="ric"><svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></div><b><span data-l="he">מוזיקה</span><span data-l="en">Music</span></b><span class="rd"><span data-l="he">מתופפים באוויר, לופר בקצב</span><span data-l="en">Drum in the air, beat-synced looper</span></span><span class="rt"><span data-l="he">⚡ 96 BPM</span><span data-l="en">⚡ 96 BPM</span></span></div>
   </div>
 </section>
 
@@ -240,7 +202,7 @@ html[lang=he] [data-l=he],html[lang=en] [data-l=en]{display:revert}
   </form>
 </section>
 
-<footer>AIRTAKE · <a href="mailto:asaflevi320@gmail.com">asaflevi320@gmail.com</a></footer>
+<footer><span style="opacity:.6;font-size:12px;display:block;margin-bottom:6px">Photo: Nolan Manning / Unsplash</span>AIRTAKE · <a href="mailto:asaflevi320@gmail.com">asaflevi320@gmail.com</a></footer>
 </div>
 <script>
 const R={he:['מה אתם עושים?','נדל"ן / משכנתאות','עורך דין / רו"ח / יועץ','חנות / מכירות בלייב','מאמן כושר / יוגה','יוצר תוכן','אחר'],en:['What do you do?','Real estate / mortgages','Lawyer / accountant / advisor','Shop / live selling','Fitness / yoga coach','Content creator','Other']};
