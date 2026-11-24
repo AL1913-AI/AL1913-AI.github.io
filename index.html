@@ -3,228 +3,371 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>AIRTAKE — צלמו בלי לגעת</title>
-<meta name="description" content="AIRTAKE: טלפרומפטר ובמאי בכיס. שולטים במסך בלי לגעת, באמצע הטייק.">
+<title>AIRTAKE — צלמו בלי ידיים</title>
+<meta name="description" content="AIRTAKE: מצלמים את עצמכם בלי לגעת בטלפון. טקסט שזז לפי הקול, כף יד חותכת, נפנוף מעביר, והסרטון יוצא ערוך.">
 <link rel="canonical" href="https://al1913-ai.github.io/">
 <meta property="og:type" content="website"><meta property="og:url" content="https://al1913-ai.github.io/">
-<meta property="og:title" content="AIRTAKE — You talk. AIRTAKE directs.">
-<meta property="og:description" content="Film yourself hands-free: a voice-following teleprompter, palm-to-stop, and videos that come out already edited. Beta: Pro free for life.">
+<meta property="og:title" content="AIRTAKE — Film yourself. Hands-free.">
+<meta property="og:description" content="Voice-following teleprompter, palm to cut, wave to move on, a second phone as a remote, and videos that come out edited. Beta: Pro free for life.">
 <meta property="og:image" content="https://al1913-ai.github.io/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://al1913-ai.github.io/og.png">
+<meta name="theme-color" content="#06060a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#07070c;--card:#11111a;--line:#ffffff14;--txt:#f3f3f8;--mut:#9a9ab0;--a:#ff3d6e;--b:#7c5cff;--c:#21d4c6}
+:root{--bg:#06060a;--card:#101018;--line:#ffffff14;--txt:#f5f5fa;--mut:#a3a3b8;--a:#ff2e63;--b:#7b5cff;--c:#1fe0c8;--y:#ffd84d;--g:linear-gradient(90deg,#ff2e63,#7b5cff 55%,#1fe0c8)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:Rubik,system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.55;overflow-x:hidden}
-a{color:inherit}
-.wrap{max-width:1080px;margin:auto;padding:0 20px}
-.glow{position:fixed;inset:-30% -20% auto;height:90vh;background:radial-gradient(closest-side,#7c5cff33,transparent),radial-gradient(closest-side at 80% 40%,#ff3d6e2a,transparent);pointer-events:none;z-index:-1}
-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-.logo{font-weight:900;letter-spacing:.04em;font-size:22px}
-.logo b{background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;color:transparent}
-.lang{min-height:44px;border:1px solid var(--line);background:#ffffff0a;color:var(--txt);border-radius:99px;padding:7px 14px;font:500 14px Rubik,system-ui,sans-serif;cursor:pointer}
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:40px 0 70px}
-.pill{display:inline-block;border:1px solid var(--line);background:#ffffff08;border-radius:99px;padding:6px 14px;font-size:13px;color:var(--mut);margin-bottom:18px}
-.pill i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--a);margin-inline-end:8px;animation:blink 1.4s infinite}
-@keyframes blink{50%{opacity:.25}}
-h1{font-size:clamp(38px,6.4vw,68px);line-height:1.05;font-weight:900;letter-spacing:-.02em}
-h1 span{background:linear-gradient(90deg,var(--a),var(--b),var(--c));-webkit-background-clip:text;color:transparent}
-.sub{font-size:19px;color:var(--mut);margin:20px 0 28px;max-width:520px}
+body{font-family:Rubik,system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1100px;margin:auto;padding:0 20px}
+.bgfx{position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(40vw 40vw at 85% 5%,#7b5cff30,transparent 70%),radial-gradient(45vw 45vw at 5% 35%,#ff2e6322,transparent 70%),radial-gradient(40vw 40vw at 70% 95%,#1fe0c81a,transparent 70%)}
+.bgfx:after{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff06 1px,transparent 1px),linear-gradient(90deg,#ffffff06 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(#000,transparent 70%)}
+.gt{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* nav */
+nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:#06060acc;border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:10px;height:62px}
+.logo{font-weight:900;font-size:21px;letter-spacing:.03em;margin-inline-end:auto;direction:ltr}
+.logo b{background:var(--g);-webkit-background-clip:text;color:transparent}
+.lang{min-height:40px;border:1px solid var(--line);background:#ffffff0a;color:var(--txt);border-radius:99px;padding:0 14px;font:500 14px Rubik,system-ui,sans-serif;cursor:pointer}
+.nbtn{min-height:40px;display:inline-flex;align-items:center;border-radius:99px;padding:0 16px;font-weight:800;font-size:14px;background:#fff;color:#000}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;min-height:54px;padding:0 26px;font:800 17px Rubik,system-ui,sans-serif;cursor:pointer;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn.p{background:var(--g);color:#fff;box-shadow:0 12px 34px #ff2e6345}
+.btn.g{background:#ffffff0e;border:1px solid #ffffff22;color:var(--txt)}
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;padding:44px 0 40px}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #ffd84d55;background:#ffd84d12;color:var(--y);border-radius:99px;padding:7px 14px;font-size:14px;font-weight:700;margin-bottom:18px}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--a);box-shadow:0 0 0 0 #ff2e63;animation:ping 1.6s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 9px #ff2e6300}100%{box-shadow:0 0 0 0 #ff2e6300}}
+h1{font-size:clamp(46px,8vw,92px);line-height:.98;font-weight:900;letter-spacing:-.035em}
+.sub{font-size:clamp(18px,2.2vw,21px);color:var(--mut);margin:20px 0 28px;max-width:500px}
+.sub b{color:var(--txt);font-weight:700}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:14px;padding:15px 24px;font:700 16px Rubik,system-ui,sans-serif;cursor:pointer;text-decoration:none}
-.btn.p{background:linear-gradient(90deg,var(--a),var(--b));color:#fff;box-shadow:0 10px 30px #ff3d6e40}
-.btn.g{background:#ffffff0d;border:1px solid var(--line);color:var(--txt)}
-.note{font-size:13px;color:var(--mut);margin-top:14px}
-/* phone */
-.phone{width:min(290px,78vw);aspect-ratio:9/19;margin:auto;border-radius:42px;background:#000;border:8px solid #1c1c26;position:relative;overflow:hidden;box-shadow:0 40px 80px #0009,0 0 0 1px #ffffff12}
-.shot{position:absolute;inset:0;overflow:hidden;background:#2a2230}
-.shot img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;animation:kb 14s ease-in-out infinite alternate;filter:saturate(1.05) contrast(1.03)}
-@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.12) translateY(-2%)}}
-.shot:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45),transparent 26%,transparent 62%,rgba(0,0,0,.6))}
-.fbox{position:absolute;left:27%;top:20%;width:46%;height:30%;animation:fb 3s ease-in-out infinite}
-.fbox i{position:absolute;width:18px;height:18px;border:3px solid #5fe0a8}
-.fbox i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0;border-radius:8px 0 0 0}.fbox i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0;border-radius:0 8px 0 0}
-.fbox i:nth-child(3){bottom:0;left:0;border-right:0;border-top:0;border-radius:0 0 0 8px}.fbox i:nth-child(4){bottom:0;right:0;border-left:0;border-top:0;border-radius:0 0 8px 0}
-.fbox em{position:absolute;top:-24px;left:50%;transform:translateX(-50%);white-space:nowrap;font:700 11px Rubik,system-ui,sans-serif;font-style:normal;color:#0b1a14;background:#5fe0a8;border-radius:99px;padding:3px 8px}
-@keyframes fb{50%{transform:translate(2px,-3px) scale(1.02)}}
-.wave{position:absolute;bottom:17%;left:50%;transform:translateX(-50%);display:flex;gap:4px;align-items:center;height:24px}
-.wave b{width:4px;border-radius:2px;background:#fff;opacity:.9;animation:wv 1s ease-in-out infinite}
-.wave b:nth-child(2){animation-delay:.1s}.wave b:nth-child(3){animation-delay:.25s}.wave b:nth-child(4){animation-delay:.05s}.wave b:nth-child(5){animation-delay:.3s}.wave b:nth-child(6){animation-delay:.15s}.wave b:nth-child(7){animation-delay:.2s}
-@keyframes wv{0%,100%{height:5px}50%{height:22px}}
-@media(prefers-reduced-motion:reduce){.shot img,.fbox,.wave b,.pill i,.tag{animation:none!important}}
-.ring{position:absolute;top:-40px;left:50%;width:150%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;box-shadow:inset 0 0 60px #ffe9d644;pointer-events:none}
-
-.body{position:absolute;left:50%;top:62%;width:80%;height:50%;transform:translateX(-50%);border-radius:45% 45% 0 0;background:#2b2440}
-.rec{position:absolute;top:16px;inset-inline-start:16px;background:#ff3d6e;color:#fff;font-size:11px;font-weight:700;border-radius:6px;padding:3px 7px}
-.prompt{position:absolute;top:44px;left:12px;right:12px;font-size:15px;font-weight:700;text-align:center;text-shadow:0 2px 8px #000}
-.prompt em{font-style:normal;color:#ffd84d}
-.tag{position:absolute;bottom:22%;inset-inline-start:12px;background:#fff;color:#111;font-weight:900;border-radius:10px;padding:6px 12px;transform:rotate(-4deg);animation:pop 4s infinite}
-@keyframes pop{0%,30%{transform:scale(0) rotate(-4deg)}38%,90%{transform:scale(1) rotate(-4deg)}100%{transform:scale(0)}}
-.cap{position:absolute;bottom:11%;left:10%;right:10%;text-align:center;font-weight:900;font-size:17px;text-shadow:0 2px 6px #000}
-.hand{position:absolute;font-size:44px;inset-inline-end:-6px;top:46%;animation:wave 2.4s infinite;filter:drop-shadow(0 6px 10px #0008)}
-@keyframes wave{0%,100%{transform:translateX(0) rotate(0)}50%{transform:translateX(-22px) rotate(-14deg)}}
-section{padding:60px 0}
-h2{font-size:clamp(28px,4vw,40px);font-weight:900;letter-spacing:-.01em;margin-bottom:10px}
-.lead{color:var(--mut);font-size:17px;margin-bottom:30px;max-width:640px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px}
-.card .ic{font-size:34px;margin-bottom:12px}
-.card h3{font-size:19px;margin-bottom:6px}
-.card p{color:var(--mut);font-size:15px}
-.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.room{position:relative;overflow:hidden;border-radius:24px;padding:22px;min-height:190px;display:flex;flex-direction:column;border:1px solid hsl(var(--h) 80% 60% / .28);background:radial-gradient(120% 90% at 100% 0%,hsl(var(--h) 90% 58% / .45),transparent 55%),radial-gradient(90% 80% at 0% 100%,hsl(var(--h2) 90% 55% / .28),transparent 60%),#12111a;box-shadow:inset 0 1px 0 #ffffff14,0 18px 40px #0005;transition:transform .25s,box-shadow .25s}
-.room:hover{transform:translateY(-4px);box-shadow:inset 0 1px 0 #ffffff1f,0 26px 60px hsl(var(--h) 90% 40% / .35)}
-.room:before{content:"";position:absolute;inset:-40% -40% auto auto;width:180px;height:180px;border-radius:50%;background:hsl(var(--h) 90% 60% / .18);filter:blur(10px)}
-.ric{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,hsl(var(--h) 90% 60%),hsl(var(--h2) 85% 50%));box-shadow:0 10px 24px hsl(var(--h) 90% 45% / .45);margin-bottom:auto}
-.ric svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.room b{display:block;font-size:20px;font-weight:800;margin:18px 0 4px}
-.room .rd{color:#c9c6d6;font-size:14px}
-.room .rt{align-self:flex-start;margin-top:12px;font-size:12px;font-weight:700;padding:5px 10px;border-radius:99px;background:#ffffff12;border:1px solid #ffffff1f;color:#fff}
-.who{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.who .card{position:relative}
-.who .n{position:absolute;top:18px;inset-inline-end:20px;font-size:40px;font-weight:900;color:#ffffff10}
-table{width:100%;border-collapse:collapse;background:var(--card);border-radius:20px;overflow:hidden;border:1px solid var(--line)}
-th,td{padding:14px 16px;text-align:start;border-bottom:1px solid var(--line);font-size:15px}
-th{color:var(--mut);font-weight:500}
-td.y{color:var(--c);font-weight:700}td.x{color:#ffffff40}
-.price{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.price .card.hot{border-color:#ff3d6e88;box-shadow:0 0 0 1px #ff3d6e55,0 20px 50px #ff3d6e22}
-.amt{font-size:36px;font-weight:900;margin:8px 0}
-.amt small{font-size:15px;color:var(--mut);font-weight:500}
-.price ul{list-style:none;color:var(--mut);font-size:14px}
-.price li{padding:4px 0}.price li:before{content:"✓ ";color:var(--c)}
-form{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:24px}
-input,select{width:100%;background:#0b0b12;border:1px solid var(--line);color:var(--txt);border-radius:12px;padding:14px;font:16px Rubik,system-ui,sans-serif}
+.trust{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px;color:var(--mut);font-size:14px}
+.trust span:before{content:"✓ ";color:var(--c);font-weight:900}
+/* phone demo */
+.stage{position:relative;display:grid;place-items:center}
+.phone{width:min(300px,76vw);aspect-ratio:9/19.2;border-radius:46px;background:#000;border:9px solid #17171f;position:relative;overflow:hidden;box-shadow:0 50px 100px #000b,0 0 0 1px #ffffff18,0 0 90px #7b5cff40}
+.phone:before{content:"";position:absolute;top:9px;left:50%;transform:translateX(-50%);width:88px;height:24px;border-radius:20px;background:#000;z-index:9}
+.shot{position:absolute;inset:0;background:radial-gradient(60% 40% at 50% 38%,#6b4a6a,transparent 70%),radial-gradient(90% 50% at 50% 100%,#3a2a55,transparent 70%),linear-gradient(#2a2233,#15121c)}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;animation:kb 16s ease-in-out infinite alternate}
+@keyframes kb{to{transform:scale(1.1)}}
+.shot:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#000a,transparent 30%,transparent 58%,#000b)}
+.rec{position:absolute;top:44px;left:16px;z-index:3;background:var(--a);color:#fff;font:800 11px Rubik;border-radius:7px;padding:3px 8px;direction:ltr}
+.seg{position:absolute;top:44px;right:16px;direction:ltr;z-index:3;background:#0008;border:1px solid #fff3;color:#fff;font:700 11px Rubik;border-radius:7px;padding:3px 8px}
+.prm{position:absolute;top:74px;left:14px;right:14px;z-index:3;height:76px;overflow:hidden;text-align:center;font:800 16px/1.4 Rubik;text-shadow:0 2px 8px #000;mask-image:linear-gradient(transparent,#000 25%,#000 75%,transparent)}
+.prm div{transition:transform .6s cubic-bezier(.3,.7,.2,1)}
+.prm p{height:38px;line-height:38px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.45}
+.prm p.on{opacity:1}.prm p.on em{color:var(--y);font-style:normal}
+.fx{position:absolute;inset:0;z-index:4;display:grid;place-items:center;pointer-events:none}
+.badge{opacity:0;transform:scale(.6);transition:.35s cubic-bezier(.3,1.6,.5,1);background:#fff;color:#000;font:900 20px Rubik;border-radius:14px;padding:10px 16px;box-shadow:0 12px 30px #0008}
+.badge.on{opacity:1;transform:scale(1) rotate(-4deg)}
+.big{font-size:72px;opacity:0;transition:.3s;filter:drop-shadow(0 10px 20px #0009)}
+.big.on{opacity:1}
+.cover{position:absolute;inset:0;z-index:5;background:#000;opacity:0;transition:opacity .25s}
+.cover.on{opacity:.92}
+.cap{position:absolute;bottom:13%;left:8%;right:8%;z-index:3;text-align:center;font:900 19px Rubik;text-shadow:0 2px 8px #000}
+.cap em{font-style:normal;background:var(--y);color:#000;border-radius:6px;padding:0 5px}
+.prog{position:absolute;top:36px;left:16px;right:16px;height:3px;border-radius:3px;background:#ffffff30;z-index:3;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--g);transition:width .6s}
+.done{position:absolute;inset:auto 12px 12px;z-index:6;background:#0d0d14ee;border:1px solid #ffffff22;border-radius:18px;padding:12px;transform:translateY(130%);transition:.45s cubic-bezier(.3,1.3,.5,1);display:flex;gap:10px;align-items:center}
+.done.on{transform:none}
+.done b{font-size:14px;display:block}.done small{color:var(--mut);font-size:12px}
+.done .ok{width:38px;height:38px;border-radius:12px;background:var(--g);display:grid;place-items:center;font-size:20px;flex:none}
+.legend{position:absolute;z-index:10;background:#11111bdd;backdrop-filter:blur(8px);border:1px solid #ffffff22;border-radius:14px;padding:9px 13px;font-weight:800;font-size:14px;white-space:nowrap;box-shadow:0 14px 30px #0008;transition:.3s}
+.legend span{color:var(--mut);font-weight:500;font-size:12px;display:block}
+.l1{top:16%;inset-inline-end:-6px}
+/* ticker */
+.tick{border-block:1px solid var(--line);overflow:hidden;padding:16px 0;margin:26px 0 10px;background:#ffffff04}
+.tick div{display:flex;gap:40px;width:max-content;animation:tk 32s linear infinite;font-weight:800;font-size:18px;color:#d9d9e6}
+.tick span{display:flex;align-items:center;gap:10px}
+.tick span:after{content:"✦";color:var(--a);margin-inline-start:30px}
+@keyframes tk{to{transform:translateX(-50%)}}
+html[dir=rtl] .tick div{animation-name:tkr}@keyframes tkr{to{transform:translateX(50%)}}
+/* sections */
+section{padding:70px 0 20px}
+.kick{display:inline-block;font-weight:800;font-size:14px;margin-bottom:10px}html[lang=en] .kick{letter-spacing:.12em;text-transform:uppercase;font-size:13px}
+h2{font-size:clamp(32px,5vw,54px);line-height:1.05;font-weight:900;letter-spacing:-.025em;margin-bottom:12px}
+.lead{color:var(--mut);font-size:18px;margin-bottom:32px;max-width:620px}
+/* moves */
+.moves{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.mv{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:22px;position:relative;overflow:hidden}
+.mv .vis{height:120px;border-radius:18px;margin-bottom:18px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(80% 90% at 50% 100%,hsl(var(--h) 90% 55% / .35),transparent 70%),#0a0a11;border:1px solid #ffffff10}
+.mv .vis .e{font-size:52px}
+.mv h3{font-size:22px;font-weight:900;margin-bottom:4px}
+.mv p{color:var(--mut);font-size:15px}
+.mv .k{position:absolute;top:18px;inset-inline-end:18px;font:900 13px Rubik;color:#fff;background:hsl(var(--h) 85% 50%);border-radius:8px;padding:3px 8px}
+.v-voice .lines{display:flex;flex-direction:column;gap:8px;width:70%;animation:scr 3s ease-in-out infinite}
+.v-voice .lines i{height:8px;border-radius:4px;background:#fff3}.v-voice .lines i:nth-child(2){background:var(--y);width:80%}
+@keyframes scr{0%,20%{transform:translateY(14px)}50%,70%{transform:translateY(-6px)}100%{transform:translateY(14px)}}
+.v-palm .e{animation:palm 2.6s ease-in-out infinite}
+@keyframes palm{0%,100%{transform:translateY(60px) scale(.8)}40%,60%{transform:none scale(1.15)}}
+.v-palm:after{content:"✂ CUT";position:absolute;font:900 14px Rubik;color:#fff;background:var(--a);border-radius:8px;padding:3px 8px;top:10px;animation:fl 2.6s infinite}
+@keyframes fl{0%,35%,70%,100%{opacity:0}45%,60%{opacity:1}}
+.v-wave .e{animation:wv 1.8s ease-in-out infinite;transform-origin:70% 90%}
+@keyframes wv{0%,100%{transform:rotate(-18deg) translateX(-20px)}50%{transform:rotate(14deg) translateX(20px)}}
+.v-wave:after{content:"2 / 5 ←";direction:ltr;position:absolute;bottom:10px;font:800 13px Rubik;color:#fff;opacity:.8}
+.v-remote .e{animation:bz 2.2s infinite}
+@keyframes bz{0%,80%,100%{transform:none}85%{transform:rotate(-6deg)}90%{transform:rotate(6deg)}}
+.v-remote:after{content:"";position:absolute;width:64px;height:64px;border-radius:50%;border:2px solid #fff6;animation:rp 2.2s infinite}
+@keyframes rp{from{transform:scale(.5);opacity:1}to{transform:scale(2.2);opacity:0}}
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.bx{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:24px;position:relative;overflow:hidden;min-height:170px}
+.bx h3{font-size:21px;font-weight:900;margin-bottom:6px}
+.bx p{color:var(--mut);font-size:15px;max-width:360px}
+.bx .ic{font-size:30px;margin-bottom:14px;display:block}
+.s2{grid-column:span 2}.s3{grid-column:span 3}.s4{grid-column:span 4}
+.hot{background:radial-gradient(90% 120% at 100% 0%,#7b5cff40,transparent 60%),radial-gradient(70% 90% at 0% 100%,#ff2e6330,transparent 60%),var(--card)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chips span{font-size:13px;font-weight:700;border-radius:99px;padding:6px 12px;background:#ffffff0d;border:1px solid #ffffff1c}
+.pads{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px;max-width:260px}
+.pads i{aspect-ratio:1;border-radius:12px;background:hsl(var(--h) 90% 58%);opacity:.3;animation:pd 1.6s infinite}
+.pads i:nth-child(1){--h:340}.pads i:nth-child(2){--h:280;animation-delay:.4s}.pads i:nth-child(3){--h:190;animation-delay:.8s}.pads i:nth-child(4){--h:45;animation-delay:1.2s}
+@keyframes pd{0%,30%,100%{opacity:.3;transform:none}10%{opacity:1;transform:scale(1.08)}}
+.onair{display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:var(--a);color:#fff;font:900 13px Rubik;border-radius:8px;padding:6px 12px;letter-spacing:.1em;direction:ltr}
+.onair:before{content:"";width:8px;height:8px;border-radius:50%;background:#fff;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.2}}
+.share{display:flex;gap:10px;margin-top:16px}
+.share span{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font:900 13px Rubik}
+.ig{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)}.tt{background:#000;border:1px solid #fff3;box-shadow:-2px -2px 0 #25f4ee,2px 2px 0 #fe2c55}.yt{background:#ff0000}
+/* rooms */
+.rooms{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:none;margin-inline:-20px;padding-inline:20px}
+.rooms::-webkit-scrollbar{display:none}
+.room{flex:0 0 220px;scroll-snap-align:start;border-radius:24px;padding:20px;min-height:200px;display:flex;flex-direction:column;border:1px solid hsl(var(--h) 80% 60% / .3);background:radial-gradient(120% 90% at 100% 0%,hsl(var(--h) 90% 58% / .5),transparent 60%),#12111a}
+.room .re{font-size:34px}
+.room b{font-size:20px;font-weight:900;margin-top:auto}
+.room span{color:#d0cde0;font-size:14px}
+.room em{font-style:normal;align-self:flex-start;margin-top:10px;font-size:12px;font-weight:800;padding:5px 10px;border-radius:99px;background:#ffffff16}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:s}
+.st{border-radius:26px;padding:26px;border:1px dashed #ffffff26;position:relative}
+.st:before{counter-increment:s;content:counter(s);font:900 64px/1 Rubik;display:block;margin-bottom:12px;background:var(--g);-webkit-background-clip:text;color:transparent}
+.st h3{font-size:21px;font-weight:900;margin-bottom:4px}.st p{color:var(--mut)}
+/* pricing */
+.gift{border-radius:28px;padding:30px;text-align:center;background:radial-gradient(100% 140% at 50% 0%,#ffd84d26,transparent 60%),var(--card);border:1px solid #ffd84d55;margin-bottom:16px}
+.gift .gb{font-size:46px}
+.gift h3{font-size:clamp(24px,3.6vw,34px);font-weight:900;margin:6px 0}
+.gift p{color:var(--mut)}
+.price{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pc{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px}
+.pc.top{border-color:#ff2e6388;box-shadow:0 0 0 1px #ff2e6344,0 20px 50px #ff2e631f}
+.pc h3{font-size:18px}.amt{font-size:38px;font-weight:900;margin:4px 0 8px}.amt small{font-size:15px;color:var(--mut);font-weight:500}
+.pc ul{list-style:none;color:var(--mut);font-size:14px}.pc li{padding:3px 0}.pc li:before{content:"✓ ";color:var(--c);font-weight:900}
+/* faq */
+details{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin-bottom:10px}
+summary{font-weight:800;font-size:17px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-size:22px;line-height:1;color:var(--mut)}
+details[open] summary:after{content:"–"}
+details p{color:var(--mut);margin-top:10px}
+/* form */
+form{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:24px}
+input,select{width:100%;min-height:54px;background:#0a0a11;border:1px solid #ffffff1f;color:var(--txt);border-radius:14px;padding:0 16px;font:16px Rubik,system-ui,sans-serif}
+input:focus,select:focus{outline:2px solid var(--b);outline-offset:1px}
 form .full{grid-column:1/-1}
-.ok{display:none;grid-column:1/-1;color:var(--c);font-weight:700}
-footer{padding:40px 0 60px;color:var(--mut);font-size:14px;text-align:center}
+.okmsg{display:none;grid-column:1/-1;color:var(--c);font-weight:700}
+footer{padding:50px 0 110px;color:var(--mut);font-size:14px;text-align:center}
+/* sticky mobile cta */
+.sticky{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:30;display:none;gap:8px;transform:translateY(160%);transition:.35s}
+.sticky.on{transform:none}
+.sticky .btn{flex:1;min-height:52px;font-size:16px}
 [data-l]{display:none}
 html[lang=he] [data-l=he],html[lang=en] [data-l=en]{display:revert}
-@media(max-width:820px){.hero{grid-template-columns:1fr;text-align:center;padding-top:20px}.sub{margin-inline:auto}.cta{justify-content:center}.grid,.rooms,.who,.price{grid-template-columns:1fr}.rooms{grid-template-columns:1fr 1fr}form{grid-template-columns:1fr}th,td{padding:11px 10px;font-size:13px}}
+:focus-visible{outline:2px solid var(--c);outline-offset:3px}
+@media(max-width:900px){.moves{grid-template-columns:1fr 1fr}.bento{grid-template-columns:1fr 1fr}.s2,.s3,.s4{grid-column:span 2}.bx.s2{grid-column:span 1}}
+@media(max-width:760px){.hero{grid-template-columns:1fr;text-align:center;padding-top:28px}.sub{margin-inline:auto}.cta,.trust{justify-content:center}.cta .btn{flex:1 1 100%}
+ .steps,.price{grid-template-columns:1fr}form{grid-template-columns:1fr}.sticky{display:flex}.nbtn{display:none}.legend{font-size:13px}.l1{inset-inline-end:2px}}
+@media(max-width:480px){.moves{grid-template-columns:1fr 1fr;gap:10px}.mv{padding:16px}.mv .vis{height:96px}.mv h3{font-size:18px}.mv p{font-size:13.5px}.bento{gap:10px}.bx{padding:18px;min-height:0}.bx.s2{grid-column:span 1}.bx.wd{grid-column:span 2}.bx.s2 h3{font-size:17px}.bx.s2 p{font-size:13.5px}.bx .ic{margin-bottom:8px}.share span{width:40px;height:40px}
+ .st{display:grid;grid-template-columns:56px 1fr;column-gap:8px;padding:18px}.st:before{font-size:46px;margin:0;grid-row:span 2}section{padding-top:56px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<div class="glow"></div>
-<div class="wrap">
-<nav>
-  <div class="logo"><b>AIR</b>TAKE</div>
+<div class="bgfx"></div>
+<nav><div class="wrap">
+  <a class="logo" href="#top" aria-label="AIRTAKE"><b>AIR</b>TAKE</a>
   <button class="lang" id="lang">English</button>
-</nav>
+  <a class="nbtn" href="./app/"><span data-l="he">פתחו את האפליקציה</span><span data-l="en">Open the app</span></a>
+</div></nav>
 
+<div class="wrap" id="top">
 <header class="hero">
   <div>
-    <div class="pill"><i></i><span data-l="he">בטא: Pro חינם לכל החיים</span><span data-l="en">Beta: Pro free for life</span></div>
-    <h1><span data-l="he">אתם מדברים.<br><span>AIRTAKE</span> מביים.</span><span data-l="en">You talk.<br><span>AIRTAKE</span> directs.</span></h1>
-    <p class="sub"><span data-l="he">טלפרומפטר שעוקב אחרי הקול, שליטה במסך בלי לגעת באמצע הטייק, וסרטון שיוצא ערוך: כותרות, מחירים, כתוביות ומוזיקה. בלי עורך, בלי צלם, בלי התקנה.</span><span data-l="en">A teleprompter that follows your voice, hands-free control mid-take, and a video that comes out already edited: titles, prices, captions and music. No editor, no crew, no install.</span></p>
+    <div class="pill"><i></i><span data-l="he">בטא פתוחה · Pro חינם לכל החיים</span><span data-l="en">Open beta · Pro free for life</span></div>
+    <h1><span data-l="he">מצלמים.<br><span class="gt">בלי ידיים.</span></span><span data-l="en">Film it.<br><span class="gt">Hands-free.</span></span></h1>
+    <p class="sub"><span data-l="he">הטקסט זז <b>לפי הקול</b>. כף יד על המצלמה <b>חותכת</b>. נפנוף <b>מעביר</b>. והסרטון יוצא <b>ערוך ומוכן</b> לאינסטגרם ולטיקטוק.</span><span data-l="en">The script <b>follows your voice</b>. A palm on the lens <b>cuts</b>. A wave <b>moves on</b>. And the video comes out <b>edited and ready</b> for Instagram and TikTok.</span></p>
     <div class="cta">
-      <a class="btn p" href="#join"><span data-l="he">אני רוצה גישה לבטא</span><span data-l="en">Get beta access</span></a>
-      <a class="btn g" href="./app/" ><span data-l="he">◂ לנסות עכשיו</span><span data-l="en">Try it now ▸</span></a>
+      <a class="btn p" href="./app/"><span data-l="he">לנסות עכשיו, בחינם</span><span data-l="en">Try it free now</span></a>
+      <a class="btn g" href="#moves"><span data-l="he">איך זה עובד?</span><span data-l="en">How does it work?</span></a>
     </div>
-    <p class="note"><span data-l="he">עובד באייפון ובאנדרואיד, ישר מהדפדפן.</span><span data-l="en">Works on iPhone and Android, right in the browser.</span></p>
+    <div class="trust"><span data-l="he">בלי התקנה</span><span data-l="en">No install</span><span data-l="he">אייפון ואנדרואיד</span><span data-l="en">iPhone &amp; Android</span><span data-l="he">בלי הרשמה</span><span data-l="en">No sign-up</span></div>
   </div>
-  <div class="phone" aria-hidden="true">
-    <div class="shot"><img src="https://images.unsplash.com/photo-1662850886700-4ec19bd30d11?auto=format&fit=crop&crop=faces&w=640&h=1350&q=78" alt="" loading="eager" onerror="this.remove()"></div>
-    <div class="fbox"><i></i><i></i><i></i><i></i><em data-l="he">פנים ✓ במרכז</em><em data-l="en">Face ✓ centered</em></div>
-    <div class="wave"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
-    <div class="rec">● REC</div>
-    <div class="prompt"><span data-l="he">הדירה הזאת <em>תשנה</em> לכם את החיים</span><span data-l="en">This home will <em>change</em> your life</span></div>
-    <div class="tag">₪2.4M</div>
-    <div class="cap"><span data-l="he">4 חדרים · נוף לים</span><span data-l="en">3 bed · sea view</span></div>
+
+  <div class="stage" aria-hidden="true">
+    <div class="phone" id="ph">
+      <div class="shot"><img src="https://images.unsplash.com/photo-1662850886700-4ec19bd30d11?auto=format&fit=crop&crop=faces&w=640&h=1350&q=78" alt="" loading="eager" onerror="this.remove()"></div>
+      <div class="prog"><i id="pg"></i></div>
+      <div class="rec">● REC</div>
+      <div class="seg" id="sg">1/4</div>
+      <div class="prm"><div id="pl"></div></div>
+      <div class="cap" id="cp"></div>
+      <div class="fx"><div class="badge" id="bd"></div></div>
+      <div class="cover" id="cv"></div>
+      <div class="fx"><div class="big" id="bg"></div></div>
+      <div class="done" id="dn"><div class="ok">✓</div><div><b data-l="he">מוכן לפרסום</b><b data-l="en">Ready to post</b><small data-l="he">כתוביות · זום · מוזיקה · שער</small><small data-l="en">Captions · zoom · music · cover</small></div></div>
+    </div>
+    <div class="legend l1" id="lg1"></div>
   </div>
 </header>
+</div>
 
-<section>
-  <h2><span data-l="he">שליטה בלי לגעת. באמת.</span><span data-l="en">Hands-free. For real.</span></h2>
-  <p class="lead"><span data-l="he">הטלפון על החצובה, אתם רחוק ממנו. שלוש דרכים לשלוט בלי לקום:</span><span data-l="en">The phone is on the tripod, you're across the room. Three ways to control it without walking over:</span></p>
-  <div class="grid">
-    <div class="card"><div class="ic">✋</div><h3><span data-l="he">כף יד על העדשה</span><span data-l="en">Palm on the lens</span></h3><p><span data-l="he">מכסים את המצלמה לשנייה, והטייק נעצר ונשמר.</span><span data-l="en">Cover the camera for a second and the take stops and saves.</span></p></div>
-    <div class="card"><div class="ic">👋</div><h3><span data-l="he">נפנוף לצד</span><span data-l="en">Wave to the side</span></h3><p><span data-l="he">נפנוף ימינה עובר לקטע הבא, שמאלה חוזר אחורה.</span><span data-l="en">Wave right for the next segment, left to go back.</span></p></div>
-    <div class="card"><div class="ic">📱</div><h3><span data-l="he">טלפון שני כשלט</span><span data-l="en">Second phone as remote</span></h3><p><span data-l="he">סורקים QR מכל טלפון והוא הופך לשלט. בלי לקנות שום דבר.</span><span data-l="en">Scan a QR with any phone and it becomes a remote. Nothing to buy.</span></p></div>
+<div class="tick" aria-hidden="true"><div id="tk"></div></div>
+
+<div class="wrap">
+<section id="moves">
+  <span class="kick gt" data-l="he">4 תנועות. זהו.</span><span class="kick gt" data-l="en">4 moves. That's it.</span>
+  <h2><span data-l="he">הטלפון על החצובה.<br>אתם לא צריכים לגעת בו.</span><span data-l="en">Phone on the tripod.<br>You never touch it.</span></h2>
+  <p class="lead"><span data-l="he">בלי לרוץ לטלפון אחרי כל טייק, בלי לבקש ממישהו ללחוץ, בלי לשנן טקסט.</span><span data-l="en">No running back after every take, no asking someone to press record, no memorizing.</span></p>
+  <div class="moves">
+    <div class="mv" style="--h:45"><span class="k">🎤</span><div class="vis v-voice"><div class="lines"><i></i><i></i><i></i><i></i></div></div><h3><span data-l="he">מדברים</span><span data-l="en">Talk</span></h3><p><span data-l="he">הטקסט גולל לבד בקצב שלכם, ונעצר כשאתם עוצרים.</span><span data-l="en">The script scrolls at your pace and waits when you pause.</span></p></div>
+    <div class="mv" style="--h:345"><span class="k">✂</span><div class="vis v-palm"><span class="e">✋</span></div><h3><span data-l="he">כף יד</span><span data-l="en">Palm</span></h3><p><span data-l="he">מכסים את המצלמה לשנייה. הטייק נחתך ונשמר.</span><span data-l="en">Cover the lens for a second. The take is cut and saved.</span></p></div>
+    <div class="mv" style="--h:260"><span class="k">⏭</span><div class="vis v-wave"><span class="e">👋</span></div><h3><span data-l="he">נפנוף</span><span data-l="en">Wave</span></h3><p><span data-l="he">ימינה לקטע הבא, שמאלה אחורה.</span><span data-l="en">Right for the next part, left to go back.</span></p></div>
+    <div class="mv" style="--h:175"><span class="k">📡</span><div class="vis v-remote"><span class="e">📱</span></div><h3><span data-l="he">שלט</span><span data-l="en">Remote</span></h3><p><span data-l="he">סורקים QR מטלפון שני והוא הופך לשלט. חינם.</span><span data-l="en">Scan a QR with a second phone and it's a remote. Free.</span></p></div>
   </div>
 </section>
 
 <section>
-  <h2><span data-l="he">חדר לכל מקצוע</span><span data-l="en">A room for every craft</span></h2>
-  <p class="lead"><span data-l="he">כל חדר יודע מה אתם צריכים ועושה את זה לבד בזמן הצילום.</span><span data-l="en">Each room knows what you need and does it automatically while you film.</span></p>
+  <span class="kick gt" data-l="he">מה עוד בפנים</span><span class="kick gt" data-l="en">What else is inside</span>
+  <h2><span data-l="he">לא רק טלפרומפטר.<br>סטודיו שלם בכיס.</span><span data-l="en">Not just a teleprompter.<br>A whole studio in your pocket.</span></h2>
+  <p class="lead"><span data-l="he">כל מה שעורך, צלם ומפיק היו עושים, קורה לבד בזמן שאתם מדברים.</span><span data-l="en">Everything an editor, camera operator and producer would do happens on its own while you talk.</span></p>
+  <div class="bento">
+    <div class="bx s4 hot"><span class="ic">🎬</span><h3><span data-l="he">יוצא ערוך. באמת.</span><span data-l="en">Comes out edited. Really.</span></h3><p><span data-l="he">זום אוטומטי בכל קטע, כתוביות פופ שמדגישות כל מילה, פס התקדמות, מוזיקה ותמונת שער. בסוף מקבלים גם טקסט לפוסט עם האשטגים.</span><span data-l="en">Auto punch-in every segment, pop captions that highlight each word, a progress bar, music and a cover image. You also get a ready caption with hashtags.</span></p>
+      <div class="chips"><span data-l="he">🔍 זום</span><span data-l="en">🔍 Zoom</span><span data-l="he">💬 כתוביות</span><span data-l="en">💬 Captions</span><span data-l="he">🎵 מוזיקה</span><span data-l="en">🎵 Music</span><span data-l="he">🖼 שער</span><span data-l="en">🖼 Cover</span><span data-l="he">#️⃣ טקסט לפוסט</span><span data-l="en">#️⃣ Caption</span></div></div>
+    <div class="bx s2 wd"><span class="ic">💡</span><h3><span data-l="he">אור ומסגרת פנים</span><span data-l="en">Light &amp; face guide</span></h3><p><span data-l="he">המסך הופך לטבעת אור, ומסגרת מראה שאתם במרכז.</span><span data-l="en">The screen becomes a ring light, and a frame keeps you centered.</span></p></div>
+    <div class="bx s3"><span class="ic">🥁</span><h3><span data-l="he">מצב ג'אם</span><span data-l="en">Jam mode</span></h3><p><span data-l="he">מתופפים באוויר מול המצלמה: פדים זוהרים על המסך, ביט ולופר בקצב.</span><span data-l="en">Drum in the air in front of the camera: glowing pads on screen, a beat and a looper in time.</span></p><div class="pads"><i></i><i></i><i></i><i></i></div></div>
+    <div class="bx s3"><span class="ic">🔴</span><h3><span data-l="he">מצב לייב</span><span data-l="en">Live mode</span></h3><p><span data-l="he">סטודיו שידור: מחיר, קופון ו"נמכר!" קופצים על המסך בדיוק כשאתם אומרים אותם.</span><span data-l="en">An on-air studio: price, coupon and "Sold!" pop up exactly when you say them.</span></p><span class="onair">ON AIR</span></div>
+    <div class="bx s2"><span class="ic">📝</span><h3><span data-l="he">תסריט מוכן</span><span data-l="en">Ready scripts</span></h3><p><span data-l="he">תבניות לכל תחום. בוחרים, מתאימים ומצלמים.</span><span data-l="en">Templates for every field. Pick, tweak, shoot.</span></p></div>
+    <div class="bx s2"><span class="ic">🔥</span><h3><span data-l="he">רצף ותוצאות</span><span data-l="en">Streaks &amp; stats</span></h3><p><span data-l="he">טייקים, דקות ורצף ימים, כדי שתמשיכו להעלות.</span><span data-l="en">Takes, minutes and a daily streak to keep you posting.</span></p></div>
+    <div class="bx s2 wd"><span class="ic">📤</span><h3><span data-l="he">ישר לרשתות</span><span data-l="en">Straight to socials</span></h3><p><span data-l="he">כפתור אחד לאינסטגרם או לטיקטוק.</span><span data-l="en">One tap to Instagram or TikTok.</span></p><div class="share"><span class="ig">IG</span><span class="tt">TT</span></div></div>
+  </div>
+</section>
+
+<section>
+  <span class="kick gt" data-l="he">חדרים</span><span class="kick gt" data-l="en">Rooms</span>
+  <h2><span data-l="he">חדר לכל מה שאתם עושים</span><span data-l="en">A room for what you do</span></h2>
+  <p class="lead"><span data-l="he">כל חדר יודע מה צריך להופיע על המסך, ושם את זה לבד.</span><span data-l="en">Each room knows what belongs on screen and puts it there by itself.</span></p>
   <div class="rooms">
-    <div class="room" style="--h:4;--h2:350"><div class="ric"><svg viewBox="0 0 24 24"><path d="M3 7h12v10H3z"/><path d="M15 10l6-3v10l-6-3"/></svg></div><b><span data-l="he">יוצרים</span><span data-l="en">Creators</span></b><span class="rd"><span data-l="he">הוק, כותרות וזום אוטומטי</span><span data-l="en">Hook, titles, auto punch-in</span></span><span class="rt"><span data-l="he">⚡ זום בכל קטע</span><span data-l="en">⚡ Auto zoom</span></span></div>
-    <div class="room" style="--h:150;--h2:190"><div class="ric"><svg viewBox="0 0 24 24"><path d="M3 12l9-9h9v9l-9 9z"/><circle cx="16" cy="8" r="1.6"/></svg></div><b><span data-l="he">מכירות ולייב</span><span data-l="en">Sales &amp; live</span></b><span class="rd"><span data-l="he">מחיר, קופון ו"נמכר!" קופצים לבד</span><span data-l="en">Price, coupon and "Sold!" pop in</span></span><span class="rt"><span data-l="he">⚡ ₪ על המסך</span><span data-l="en">⚡ Price on screen</span></span></div>
-    <div class="room" style="--h:52;--h2:20"><div class="ric"><svg viewBox="0 0 24 24"><path d="M6 8v8M3 10v4M18 8v8M21 10v4M6 12h12"/></svg></div><b><span data-l="he">כושר</span><span data-l="en">Fitness</span></b><span class="rd"><span data-l="he">טיימר שמתחיל לבד בכל תרגיל</span><span data-l="en">Timer starts itself per exercise</span></span><span class="rt"><span data-l="he">⚡ 0:30 ⏱</span><span data-l="en">⚡ 0:30 ⏱</span></span></div>
-    <div class="room" style="--h:28;--h2:340"><div class="ric"><svg viewBox="0 0 24 24"><path d="M6 13a4 4 0 1 1 2-7.5A4.5 4.5 0 0 1 16 5a4 4 0 1 1 2 8v6H6z"/><path d="M6 16h12"/></svg></div><b><span data-l="he">מטבח</span><span data-l="en">Kitchen</span></b><span class="rd"><span data-l="he">מתכון צעד-צעד, ידיים מלוכלכות זה בסדר</span><span data-l="en">Step-by-step, messy hands welcome</span></span><span class="rt"><span data-l="he">⚡ שלב 2/5</span><span data-l="en">⚡ Step 2/5</span></span></div>
-    <div class="room" style="--h:210;--h2:260"><div class="ric"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg></div><b><span data-l="he">מרצים ומומחים</span><span data-l="en">Experts</span></b><span class="rd"><span data-l="he">נקודות מפתח ופס התקדמות</span><span data-l="en">Key points and progress bar</span></span><span class="rt"><span data-l="he">⚡ נקודה 3</span><span data-l="en">⚡ Point 3</span></span></div>
-    <div class="room" style="--h:280;--h2:320"><div class="ric"><svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></div><b><span data-l="he">מוזיקה</span><span data-l="en">Music</span></b><span class="rd"><span data-l="he">מתופפים באוויר, לופר בקצב</span><span data-l="en">Drum in the air, beat-synced looper</span></span><span class="rt"><span data-l="he">⚡ 96 BPM</span><span data-l="en">⚡ 96 BPM</span></span></div>
+    <div class="room" style="--h:350"><span class="re">🎥</span><b><span data-l="he">יוצרים</span><span data-l="en">Creators</span></b><span><span data-l="he">פתיח חזק, כותרות וכתוביות פופ</span><span data-l="en">Strong hook, titles, pop captions</span></span><em><span data-l="he">⚡ זום בכל קטע</span><span data-l="en">⚡ Auto zoom</span></em></div>
+    <div class="room" style="--h:160"><span class="re">🏷️</span><b><span data-l="he">מכירות</span><span data-l="en">Selling</span></b><span><span data-l="he">מחיר וקופון קופצים בכל מוצר</span><span data-l="en">Price &amp; coupon pop per product</span></span><em><span data-l="he">⚡ ₪ על המסך</span><span data-l="en">⚡ Price on screen</span></em></div>
+    <div class="room" style="--h:40"><span class="re">💪</span><b><span data-l="he">כושר</span><span data-l="en">Fitness</span></b><span><span data-l="he">טיימר מתחיל לבד בכל תרגיל</span><span data-l="en">Timer starts per exercise</span></span><em>⚡ 0:30 ⏱</em></div>
+    <div class="room" style="--h:20"><span class="re">🍳</span><b><span data-l="he">מטבח</span><span data-l="en">Kitchen</span></b><span><span data-l="he">ידיים בבצק? נפנוף = השלב הבא</span><span data-l="en">Hands in dough? Wave = next step</span></span><em><span data-l="he">⚡ שלב 2/5</span><span data-l="en">⚡ Step 2/5</span></em></div>
+    <div class="room" style="--h:215"><span class="re">🎓</span><b><span data-l="he">הרצאה</span><span data-l="en">Teaching</span></b><span><span data-l="he">כל קטע הוא שקף עם כותרת</span><span data-l="en">Each segment is a titled slide</span></span><em><span data-l="he">⚡ נקודה 3</span><span data-l="en">⚡ Point 3</span></em></div>
+    <div class="room" style="--h:285"><span class="re">🎹</span><b><span data-l="he">ג'אם</span><span data-l="en">Jam</span></b><span><span data-l="he">"ביט", מתופפים בצדדים, "לופ"</span><span data-l="en">"Beat", drum the sides, "loop"</span></span><em>⚡ 96 BPM</em></div>
   </div>
 </section>
 
 <section>
-  <h2><span data-l="he">למי זה בנוי</span><span data-l="en">Built for</span></h2>
-  <p class="lead"><span data-l="he">אנשים שחייבים להופיע בווידאו, אבל לא רוצים להפוך לעורכים.</span><span data-l="en">People who must show up on video, but don't want to become editors.</span></p>
-  <div class="who">
-    <div class="card"><div class="n">01</div><h3><span data-l="he">אנשי מקצוע</span><span data-l="en">Professionals</span></h3><p><span data-l="he">סוכני נדל"ן, יועצי משכנתאות, עורכי דין, רואי חשבון. סרטון שבועי ב-5 דקות, בלי לגמגם.</span><span data-l="en">Realtors, mortgage advisors, lawyers, accountants. A weekly video in 5 minutes, no stumbling.</span></p></div>
-    <div class="card"><div class="n">02</div><h3><span data-l="he">עסקים שמוכרים בסטורי ובלייב</span><span data-l="en">Shops selling on stories &amp; live</span></h3><p><span data-l="he">בוטיקים, קוסמטיקה, תכשיטים. המחיר והקופון מופיעים בדיוק כשאומרים אותם.</span><span data-l="en">Boutiques, beauty, jewelry. Price and coupon appear exactly when you say them.</span></p></div>
-    <div class="card"><div class="n">03</div><h3><span data-l="he">מאמני כושר ויוגה</span><span data-l="en">Fitness &amp; yoga coaches</span></h3><p><span data-l="he">ידיים על המזרן, לא על המסך. הטיימר והמעבר בין תרגילים קורים לבד.</span><span data-l="en">Hands on the mat, not the screen. Timers and transitions run themselves.</span></p></div>
+  <span class="kick gt" data-l="he">3 צעדים</span><span class="kick gt" data-l="en">3 steps</span>
+  <h2><span data-l="he">מאפס לסרטון ב-2 דקות</span><span data-l="en">Zero to video in 2 minutes</span></h2>
+  <div class="steps">
+    <div class="st"><h3><span data-l="he">פותחים קישור</span><span data-l="en">Open the link</span></h3><p><span data-l="he">ישר מהדפדפן, בלי חנות אפליקציות ובלי הרשמה.</span><span data-l="en">Right in the browser. No app store, no sign-up.</span></p></div>
+    <div class="st"><h3><span data-l="he">מציבים את הטלפון</span><span data-l="en">Prop up the phone</span></h3><p><span data-l="he">בוחרים חדר, מדביקים טקסט או בוחרים תבנית.</span><span data-l="en">Pick a room, paste a script or choose a template.</span></p></div>
+    <div class="st"><h3><span data-l="he">מדברים</span><span data-l="en">Talk</span></h3><p><span data-l="he">כף יד חותכת, נפנוף מעביר, והסרטון מחכה לכם ערוך.</span><span data-l="en">Palm cuts, wave moves on, and the edited video is waiting.</span></p></div>
   </div>
+  <div class="cta" style="justify-content:center;margin-top:26px"><a class="btn p" href="./app/"><span data-l="he">יאללה, לנסות</span><span data-l="en">Let's try it</span></a></div>
 </section>
 
-<section>
-  <h2><span data-l="he">למה לא סתם טלפרומפטר?</span><span data-l="en">Why not just a teleprompter?</span></h2>
-  <p class="lead"><span data-l="he">טלפרומפטר כבר יש בכל אפליקציה. מה שאין בהן:</span><span data-l="en">Every app has a teleprompter now. What they don't have:</span></p>
-  <table>
-    <tr><th></th><th>AIRTAKE</th><th><span data-l="he">טלפרומפטר רגיל</span><span data-l="en">Regular prompter</span></th></tr>
-    <tr><td><span data-l="he">טקסט שעוקב אחרי הקול</span><span data-l="en">Text follows your voice</span></td><td class="y">✓</td><td class="y">✓</td></tr>
-    <tr><td><span data-l="he">עצירה וניווט בלי לגעת</span><span data-l="en">Stop &amp; navigate hands-free</span></td><td class="y">✓</td><td class="x">—</td></tr>
-    <tr><td><span data-l="he">טלפון שני כשלט, חינם</span><span data-l="en">Free phone-as-remote</span></td><td class="y">✓</td><td class="x">—</td></tr>
-    <tr><td><span data-l="he">מחירים, טיימרים וכותרות אוטומטיים</span><span data-l="en">Auto prices, timers, titles</span></td><td class="y">✓</td><td class="x">—</td></tr>
-    <tr><td><span data-l="he">יוצא ערוך: זום, מוזיקה, שער, טקסט לפוסט</span><span data-l="en">Comes out edited: zoom, music, cover, caption</span></td><td class="y">✓</td><td class="x">—</td></tr>
-    <tr><td><span data-l="he">תאורת מסך ומסגרת פנים</span><span data-l="en">Screen ring-light &amp; face guide</span></td><td class="y">✓</td><td class="x">—</td></tr>
-  </table>
-</section>
-
-<section>
-  <h2><span data-l="he">מחירים</span><span data-l="en">Pricing</span></h2>
-  <p class="lead"><span data-l="he">מתחילים בחינם. משדרגים כשזה מתחיל להכניס לכם לקוחות.</span><span data-l="en">Start free. Upgrade when it starts paying off.</span></p>
+<section id="price">
+  <span class="kick gt" data-l="he">מחיר</span><span class="kick gt" data-l="en">Pricing</span>
+  <h2><span data-l="he">עכשיו זה הזמן להיכנס</span><span data-l="en">Now is the time to get in</span></h2>
+  <div class="gift"><div class="gb">🎁</div><h3><span data-l="he">מי שנכנס בבטא, Pro חינם. לכל החיים.</span><span data-l="en">Join in beta, get Pro free. For life.</span></h3><p><span data-l="he">רק בתקופת הבטא, בתמורה לפידבק כן.</span><span data-l="en">Beta period only, in exchange for honest feedback.</span></p></div>
   <div class="price">
-    <div class="card"><h3><span data-l="he">חינם</span><span data-l="en">Free</span></h3><div class="amt">₪0</div><ul><li><span data-l="he">כל השליטה בלי ידיים</span><span data-l="en">All hands-free control</span></li><li><span data-l="he">2 חדרים</span><span data-l="en">2 rooms</span></li><li><span data-l="he">סימן מים קטן</span><span data-l="en">Small watermark</span></li></ul></div>
-    <div class="card hot"><h3>Pro</h3><div class="amt">₪49<small><span data-l="he"> / חודש</span><span data-l="en"> / mo</span></small></div><ul><li><span data-l="he">או ₪390 לשנה</span><span data-l="en">or ₪390 / year</span></li><li><span data-l="he">בלי סימן מים</span><span data-l="en">No watermark</span></li><li><span data-l="he">כל החדרים, הלוקים והמוזיקה</span><span data-l="en">All rooms, looks &amp; music</span></li><li><span data-l="he">שער, טקסט לפוסט ושיתוף ישיר</span><span data-l="en">Cover, caption &amp; direct share</span></li></ul></div>
-    <div class="card"><h3>Business</h3><div class="amt">₪129<small><span data-l="he"> / חודש</span><span data-l="en"> / mo</span></small></div><ul><li><span data-l="he">מצב לייב מכירות</span><span data-l="en">Live selling mode</span></li><li><span data-l="he">לוגו ומיתוג קבוע</span><span data-l="en">Your logo &amp; branding</span></li><li><span data-l="he">עד 3 משתמשים</span><span data-l="en">Up to 3 users</span></li></ul></div>
+    <div class="pc"><h3><span data-l="he">חינם</span><span data-l="en">Free</span></h3><div class="amt">₪0</div><ul><li><span data-l="he">כל השליטה בלי ידיים</span><span data-l="en">All hands-free control</span></li><li><span data-l="he">2 חדרים</span><span data-l="en">2 rooms</span></li><li><span data-l="he">סימן מים קטן</span><span data-l="en">Small watermark</span></li></ul></div>
+    <div class="pc top"><h3>Pro</h3><div class="amt">₪49<small><span data-l="he"> / חודש</span><span data-l="en"> / mo</span></small></div><ul><li><span data-l="he">או ₪390 לשנה</span><span data-l="en">or ₪390 / year</span></li><li><span data-l="he">בלי סימן מים</span><span data-l="en">No watermark</span></li><li><span data-l="he">כל החדרים, הלוקים והמוזיקה</span><span data-l="en">All rooms, looks &amp; music</span></li><li><span data-l="he">שער, טקסט לפוסט ושיתוף ישיר</span><span data-l="en">Cover, caption &amp; direct share</span></li></ul></div>
+    <div class="pc"><h3>Business</h3><div class="amt">₪129<small><span data-l="he"> / חודש</span><span data-l="en"> / mo</span></small></div><ul><li><span data-l="he">מצב לייב מכירות</span><span data-l="en">Live selling mode</span></li><li><span data-l="he">לוגו ומיתוג קבוע</span><span data-l="en">Your logo &amp; branding</span></li><li><span data-l="he">עד 3 משתמשים</span><span data-l="en">Up to 3 users</span></li></ul></div>
   </div>
-  <p class="note" style="text-align:center;margin-top:18px;font-size:15px;color:#ffcf5a;font-weight:700"><span data-l="he">🎁 מצטרפי הבטא מקבלים Pro חינם לכל החיים. רק בתקופת הבטא.</span><span data-l="en">🎁 Beta members get Pro free for life. Beta period only.</span></p>
+</section>
+
+<section>
+  <h2 style="font-size:clamp(28px,4vw,40px)"><span data-l="he">שאלות קצרות</span><span data-l="en">Quick questions</span></h2>
+  <details><summary><span data-l="he">צריך להתקין משהו?</span><span data-l="en">Do I need to install anything?</span></summary><p><span data-l="he">לא. זה עובד ישר מהדפדפן. אפשר להוסיף למסך הבית כמו אפליקציה.</span><span data-l="en">No. It runs in the browser, and you can add it to your home screen like an app.</span></p></details>
+  <details><summary><span data-l="he">זה עובד באייפון?</span><span data-l="en">Does it work on iPhone?</span></summary><p><span data-l="he">כן, ב-Safari. באייפון הטקסט זז לפי עוצמת הדיבור (פקודות קוליות הן ניסיוניות), וכל השליטה בכף יד, בנפנוף ובשלט עובדת.</span><span data-l="en">Yes, in Safari. On iPhone the script moves with your speaking (voice commands are experimental), and palm, wave and remote control all work.</span></p></details>
+  <details><summary><span data-l="he">הסרטונים שלי עולים לאנשהו?</span><span data-l="en">Are my videos uploaded anywhere?</span></summary><p><span data-l="he">לא. הם נשמרים אצלכם במכשיר, ואתם מחליטים מה לשתף.</span><span data-l="en">No. They stay on your device and you decide what to share.</span></p></details>
+  <details><summary><span data-l="he">צריך טלפון שני?</span><span data-l="en">Do I need a second phone?</span></summary><p><span data-l="he">לא חובה. כף יד ונפנוף מספיקים. טלפון שני או שלט Bluetooth זה בונוס.</span><span data-l="en">No. Palm and wave are enough. A second phone or a Bluetooth clicker is a bonus.</span></p></details>
 </section>
 
 <section id="join">
-  <h2><span data-l="he">הצטרפו לבטא</span><span data-l="en">Join the beta</span></h2>
-  <p class="lead"><span data-l="he">מי שמצטרף עכשיו מקבל Pro חינם לכל החיים, תמורת פידבק כן. נחזור אליכם תוך יום.</span><span data-l="en">Join now and get Pro free for life, in exchange for honest feedback. We'll get back within a day.</span></p>
+  <h2><span data-l="he">שמרו לי מקום בבטא</span><span data-l="en">Save my beta spot</span></h2>
+  <p class="lead"><span data-l="he">משאירים פרטים ומקבלים Pro חינם לכל החיים. נחזור אליכם תוך יום.</span><span data-l="en">Leave your details and get Pro free for life. We'll get back within a day.</span></p>
   <form id="f">
     <input name="name" required aria-label="שם מלא" placeholder="שם מלא" data-ph-en="Full name">
     <input name="contact" required aria-label="טלפון או מייל" placeholder="טלפון או מייל" data-ph-en="Phone or email">
     <select name="role" class="full" aria-label="תחום">
       <option value="">מה אתם עושים?</option>
-      <option>נדל"ן / משכנתאות</option><option>עורך דין / רו"ח / יועץ</option><option>חנות / מכירות בלייב</option><option>מאמן כושר / יוגה</option><option>יוצר תוכן</option><option>אחר</option>
+      <option>יוצר תוכן</option><option>נדל"ן / משכנתאות</option><option>עורך דין / רו"ח / יועץ</option><option>חנות / מכירות בלייב</option><option>מאמן כושר / יוגה</option><option>מוזיקה</option><option>אחר</option>
     </select>
-    <button class="btn p full" type="submit"><span data-l="he">שמרו לי מקום</span><span data-l="en">Save my spot</span></button>
-    <div class="ok" id="ok"><span data-l="he">כמעט! נפתח מייל מוכן, לחצו בו "שליחה". לא נפתח? שלחו את הפרטים ל-asaflevi320@gmail.com</span><span data-l="en">Almost! A ready email should open, tap Send. Nothing opened? Email your details to asaflevi320@gmail.com</span></div>
+    <button class="btn p full" type="submit"><span data-l="he">אני בפנים 🎁</span><span data-l="en">I'm in 🎁</span></button>
+    <div class="okmsg" id="ok"><span data-l="he">כמעט! נפתח מייל מוכן, לחצו בו "שליחה". לא נפתח? שלחו את הפרטים ל-asaflevi320@gmail.com</span><span data-l="en">Almost! A ready email should open, tap Send. Nothing opened? Email your details to asaflevi320@gmail.com</span></div>
   </form>
 </section>
+</div>
 
 <footer><span style="opacity:.6;font-size:12px;display:block;margin-bottom:6px">Photo: Nolan Manning / Unsplash</span>AIRTAKE · <a href="mailto:asaflevi320@gmail.com">asaflevi320@gmail.com</a></footer>
-</div>
+
+<div class="sticky" id="stk"><a class="btn p" href="./app/"><span data-l="he">לנסות בחינם</span><span data-l="en">Try free</span></a><a class="btn g" href="#join" style="flex:0 0 auto;padding:0 18px">🎁</a></div>
+
 <script>
-const R={he:['מה אתם עושים?','נדל"ן / משכנתאות','עורך דין / רו"ח / יועץ','חנות / מכירות בלייב','מאמן כושר / יוגה','יוצר תוכן','אחר'],en:['What do you do?','Real estate / mortgages','Lawyer / accountant / advisor','Shop / live selling','Fitness / yoga coach','Content creator','Other']};
-function setL(l){const h=document.documentElement;h.lang=l;h.dir=l==='he'?'rtl':'ltr';
- document.getElementById('lang').textContent=l==='he'?'English':'עברית';
- document.title=l==='he'?'AIRTAKE — צלמו בלי לגעת':'AIRTAKE — Film hands-free';
+const T={
+ he:{roles:['מה אתם עושים?','יוצר תוכן','נדל"ן / משכנתאות','עורך דין / רו"ח / יועץ','חנות / מכירות בלייב','מאמן כושר / יוגה','מוזיקה','אחר'],
+  tick:['🎤 טקסט לפי הקול','✋ כף יד = חיתוך','👋 נפנוף = הבא','📱 טלפון שני = שלט','🔍 זום אוטומטי','💬 כתוביות פופ','🥁 מצב ג׳אם','🔴 מצב לייב','💡 טבעת אור','📤 ישר לאינסטגרם וטיקטוק'],
+  lines:['היי, אני דנה 👋','הדירה הזאת <em>תשנה</em> לכם את החיים','4 חדרים, נוף לים','והמחיר? <em>אתם לא תאמינו</em>','שלחו לי הודעה עכשיו'],
+  scenes:[['🎤 מדברים','הטקסט זז לפי הקול'],['✋ כף יד','הטייק נחתך ונשמר'],['👋 נפנוף','עוברים לקטע הבא'],['⚡ חדר מכירות','המחיר קופץ לבד'],['🎬 מוכן','יוצא ערוך']],
+  caps:['היי, אני <em>דנה</em>','','4 חדרים · <em>נוף לים</em>','<em>₪2.4M</em>',''],title:'AIRTAKE — צלמו בלי ידיים',bad:'נא להזין מייל או מספר טלפון תקין'},
+ en:{roles:['What do you do?','Content creator','Real estate / mortgages','Lawyer / accountant / advisor','Shop / live selling','Fitness / yoga coach','Music','Other'],
+  tick:['🎤 Script follows your voice','✋ Palm = cut','👋 Wave = next','📱 2nd phone = remote','🔍 Auto zoom','💬 Pop captions','🥁 Jam mode','🔴 Live mode','💡 Ring light','📤 Straight to IG & TikTok'],
+  lines:["Hi, I'm Dana 👋",'This home will <em>change</em> your life','3 bedrooms, sea view','And the price? <em>You won\'t believe it</em>','Message me now'],
+  scenes:[['🎤 Talk','Script follows your voice'],['✋ Palm','Take is cut & saved'],['👋 Wave','On to the next part'],['⚡ Sales room','Price pops by itself'],['🎬 Done','Comes out edited']],
+  caps:["Hi, I'm <em>Dana</em>",'','3 bed · <em>sea view</em>','<em>$640K</em>',''],title:'AIRTAKE — Film hands-free',bad:'Please enter a valid email or phone'}};
+const $=id=>document.getElementById(id);
+let L='he',timer;
+function setL(l){L=l;const h=document.documentElement;h.lang=l;h.dir=l==='he'?'rtl':'ltr';
+ $('lang').textContent=l==='he'?'English':'עברית';document.title=T[l].title;
  document.querySelectorAll('[data-ph-en]').forEach(i=>{i.dataset.phHe??=i.placeholder;i.placeholder=l==='he'?i.dataset.phHe:i.dataset.phEn});
- [...document.querySelector('select').options].forEach((o,k)=>o.textContent=R[l][k]);
- try{localStorage.setItem('at-l',l)}catch(e){}}
-let L='he';try{L=localStorage.getItem('at-l')||(/^he|^iw/i.test(navigator.language||'')?'he':'en')}catch(e){}
+ [...document.querySelector('select').options].forEach((o,k)=>o.textContent=T[l].roles[k]);
+ const t=T[l].tick.map(x=>`<span>${x}</span>`).join('');$('tk').innerHTML=t+t;
+ $('pl').innerHTML=T[l].lines.map(x=>`<p>${x}</p>`).join('');
+ try{localStorage.setItem('at-l',l)}catch(e){}
+ clearTimeout(timer);step=0;run()}
+/* phone demo loop */
+let step=0;
+function show(el,on){$(el).classList.toggle('on',on)}
+function line(n){const ps=$('pl').children;[...ps].forEach((p,i)=>p.classList.toggle('on',i===n));$('pl').style.transform=`translateY(${19-n*38}px)`}
+function legend(i){const s=T[L].scenes[i];$('lg1').innerHTML=`${s[0]}<span>${s[1]}</span>`}
+function run(){
+ const t=T[L],s=step%5;show('dn',false);show('bd',false);show('bg',false);show('cv',false);legend(s);
+ $('pg').style.width=((s+1)*20)+'%';
+ if(s===0){$('sg').textContent='1/3';line(0);$('cp').innerHTML=t.caps[0];setTimeout(()=>line(1),1300)}
+ if(s===1){$('bg').textContent='✋';show('cv',true);show('bg',true);$('cp').innerHTML='';setTimeout(()=>{$('bg').textContent='✂';},800)}
+ if(s===2){$('bg').textContent='👋';show('bg',true);setTimeout(()=>{show('bg',false);$('sg').textContent='2/3';line(2);$('cp').innerHTML=t.caps[2]},900)}
+ if(s===3){$('sg').textContent='3/3';line(3);$('bd').textContent=L==='he'?'₪2.4M':'$640K';setTimeout(()=>show('bd',true),500);$('cp').innerHTML=''}
+ if(s===4){line(4);show('dn',true)}
+ step++;timer=setTimeout(run,2600)}
+try{L=localStorage.getItem('at-l')||(/^he|^iw/i.test(navigator.language||'')?'he':'en')}catch(e){}
 setL(L);
-document.getElementById('lang').onclick=()=>setL(document.documentElement.lang==='he'?'en':'he');
-document.getElementById('f').onsubmit=e=>{e.preventDefault();const d=new FormData(e.target);const c=(d.get('contact')||'').trim();if(!/@.+\./.test(c)&&c.replace(/\D/g,'').length<9){alert(document.documentElement.lang==='he'?'נא להזין מייל או מספר טלפון תקין':'Please enter a valid email or phone');return}
- const body=`Name: ${d.get('name')}\nContact: ${d.get('contact')}\nRole: ${d.get('role')||'-'}\nLang: ${document.documentElement.lang}`;
+$('lang').onclick=()=>setL(L==='he'?'en':'he');
+/* sticky cta */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.target.id==='top')$('stk').classList.toggle('on',!e.isIntersecting);}),{threshold:0});
+io.observe($('top'));
+const jo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)$('stk').classList.remove('on')}));jo.observe($('join'));
+/* form */
+$('f').onsubmit=e=>{e.preventDefault();const d=new FormData(e.target);const c=(d.get('contact')||'').trim();
+ if(!/@.+\./.test(c)&&c.replace(/\D/g,'').length<9){alert(T[L].bad);return}
+ const body=`Name: ${d.get('name')}\nContact: ${d.get('contact')}\nRole: ${d.get('role')||'-'}\nLang: ${L}`;
  location.href='mailto:asaflevi320@gmail.com?subject='+encodeURIComponent('AIRTAKE beta signup')+'&body='+encodeURIComponent(body);
- document.getElementById('ok').style.display='block'};
+ $('ok').style.display='block'};
 </script>
 </body>
 </html>
