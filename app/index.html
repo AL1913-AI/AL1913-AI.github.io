@@ -340,6 +340,46 @@ select{background:#0b0b10;border:1px solid var(--line);border-radius:10px;paddin
 @keyframes gp{50%{box-shadow:0 0 0 9px rgba(255,255,255,0)}}
 @media(prefers-reduced-motion:reduce){.gobar .go.big::before{animation:none}}
 @media(min-width:760px){.home .tile{flex-basis:30%}.hero2{aspect-ratio:16/9}}
+
+/* ===== v13: dashboard in the landing-page style ===== */
+:root{--brandA:#ff3d6e;--brandB:#7c5cff;--brandC:#21d4c6}
+.home{background:radial-gradient(90% 45% at 100% -5%,rgba(124,92,255,.32),transparent 60%),radial-gradient(80% 40% at 0% 100%,rgba(255,61,110,.22),transparent 60%),radial-gradient(60% 30% at 0% 0%,hsla(var(--rh,4),90%,55%,.18),transparent 60%),#07070c}
+.home .brand em,.htop .brand em{background:linear-gradient(90deg,var(--brandA),var(--brandB));-webkit-background-clip:text;background-clip:text;color:transparent}
+.greet em{background:linear-gradient(90deg,var(--brandA),var(--brandB),var(--brandC))!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent}
+.hero2{border-radius:30px;box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 0 1px #ffffff12,0 0 60px rgba(124,92,255,.18)}
+.hph{padding:0!important;display:block!important}
+.hph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 28%;animation:kb2 14s ease-in-out infinite alternate}
+@keyframes kb2{from{transform:scale(1.02)}to{transform:scale(1.1)}}
+.hph>span{position:absolute;top:54px;inset-inline:0;text-align:center;font-size:12px!important;color:#fff!important;opacity:.85;text-shadow:0 2px 8px #000}
+.hfb{position:absolute;left:32%;top:24%;width:36%;height:38%;animation:fb2 3s ease-in-out infinite}
+.hfb i{position:absolute;width:16px;height:16px;border:3px solid #5fe0a8}
+.hfb i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0;border-radius:7px 0 0 0}.hfb i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0;border-radius:0 7px 0 0}
+.hfb i:nth-child(3){bottom:0;left:0;border-right:0;border-top:0;border-radius:0 0 0 7px}.hfb i:nth-child(4){bottom:0;right:0;border-left:0;border-top:0;border-radius:0 0 7px 0}
+.hfb em{position:absolute;top:-22px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:11px;font-weight:800;font-style:normal;color:#0b1a14;background:#5fe0a8;border-radius:99px;padding:2px 8px}
+@keyframes fb2{50%{transform:translate(2px,-3px) scale(1.02)}}
+.hwv{position:absolute;bottom:96px;left:50%;transform:translateX(-50%);display:flex;gap:4px;align-items:center;height:22px}
+.hwv b{width:4px;border-radius:2px;background:#fff;animation:wv2 1s ease-in-out infinite}
+.hwv b:nth-child(2){animation-delay:.1s}.hwv b:nth-child(3){animation-delay:.25s}.hwv b:nth-child(4){animation-delay:.05s}.hwv b:nth-child(5){animation-delay:.3s}.hwv b:nth-child(6){animation-delay:.15s}.hwv b:nth-child(7){animation-delay:.2s}
+@keyframes wv2{0%,100%{height:5px}50%{height:20px}}
+.home .tile{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;gap:0;padding:18px;min-height:178px;border-radius:24px;border:1px solid hsla(var(--h),80%,60%,.28);background:radial-gradient(120% 90% at 100% 0%,hsla(var(--h),90%,58%,.42),transparent 55%),radial-gradient(90% 80% at 0% 100%,hsla(var(--h2),90%,55%,.26),transparent 60%),#12111a;box-shadow:inset 0 1px 0 #ffffff14,0 16px 36px #0006}
+.home .tile .tic{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(145deg,hsl(var(--h),90%,60%),hsl(var(--h2),85%,50%));box-shadow:0 10px 22px hsla(var(--h),90%,45%,.45);margin-bottom:auto}
+.home .tile .tic svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2}
+.home .tile b{font-size:18px;margin-top:16px}
+.home .tile span{color:#c9c6d6}
+.home .tile .ttag{margin-top:10px;font-style:normal;font-size:11px;font-weight:800;padding:4px 9px;border-radius:99px;background:#ffffff12;border:1px solid #ffffff1f;color:#fff}
+.home .tile[aria-pressed=true]{border-color:hsl(var(--h),95%,66%);box-shadow:0 0 0 3px hsla(var(--h),95%,60%,.25),0 16px 36px hsla(var(--h),90%,40%,.35)}
+.home .modes button[aria-pressed=true]{background:linear-gradient(90deg,var(--brandA),var(--brandB))!important;box-shadow:0 8px 22px rgba(255,61,110,.35)!important}
+.gobar .go.big{background:linear-gradient(90deg,var(--brandA),var(--brandB))!important;box-shadow:0 14px 40px rgba(255,61,110,.38)!important}
+.beta{background:linear-gradient(90deg,#ffcf5a,#ff8a3d)}
+.qa .q1{background:radial-gradient(120% 90% at 100% 0%,rgba(255,61,110,.30),transparent 60%),#12111a}
+.qa .q2{background:radial-gradient(120% 90% at 100% 0%,rgba(124,92,255,.30),transparent 60%),#12111a}
+.qa .q4{background:radial-gradient(120% 90% at 100% 0%,rgba(33,212,198,.22),transparent 60%),#12111a}
+.qa #bSaved{background:radial-gradient(120% 90% at 100% 0%,rgba(255,207,90,.22),transparent 60%),#12111a}
+.stats div{background:linear-gradient(180deg,#ffffff0d,#ffffff05)}
+.qa button i{border-radius:14px!important;width:42px!important;height:42px!important;box-shadow:0 8px 18px #0006}
+.qa .q1 i{background:linear-gradient(145deg,#ff3d6e,#ff8a3d)!important}.qa .q2 i{background:linear-gradient(145deg,#7c5cff,#3b82f6)!important}.qa .q4 i{background:linear-gradient(145deg,#21d4c6,#3b82f6)!important}
+#bSaved::before{background:linear-gradient(145deg,#ffcf5a,#ff8a3d)!important;border-radius:14px!important}
+@media(prefers-reduced-motion:reduce){.hph img,.hfb,.hwv b{animation:none!important}}
 </style>
 </head>
 <body>
@@ -492,7 +532,7 @@ select{background:#0b0b10;border:1px solid var(--line);border-radius:10px;paddin
 
       <section class="hero2" aria-label="סטודיו">
         <video id="hPrev" muted playsinline autoplay aria-hidden="true"></video>
-        <div class="hph" aria-hidden="true"><svg viewBox="0 0 120 120"><ellipse cx="60" cy="54" rx="30" ry="38" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="7 7"/><path d="M28 118c4-20 18-30 32-30s28 10 32 30" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="7 7"/></svg><span>הסטודיו שלכם מחכה כאן</span></div>
+        <div class="hph" aria-hidden="true"><img src="https://images.unsplash.com/photo-1662850886700-4ec19bd30d11?auto=format&fit=crop&crop=faces&w=800&h=720&q=78" alt="" loading="lazy" onerror="this.remove()"><div class="hfb"><i></i><i></i><i></i><i></i><em>פנים ✓ במרכז</em></div><div class="hwv"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div></div>
         <div class="hshade"></div>
         <div class="hpills"><span id="pCam"><i></i>מצלמה</span><span id="pMic"><i></i>מיקרופון</span><span id="pRoom"></span></div>
         <button class="hscript" id="hScript">
@@ -620,7 +660,7 @@ try{Object.assign(S,JSON.parse(localStorage.getItem('airtake-s')||'{}'))}catch(e
 const IOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 if((S.v||0)<5){S.ai=false;S.sens=Math.min(S.sens,4)}
 if((S.v||0)<7&&IOS){S.voiceCmd=false;S.voiceTrack=false;S.captions=false}
-S.v=7;const VER='v12';
+S.v=7;const VER='v13';
 if(/tiiny\.(site|host)$/.test(location.hostname))document.documentElement.classList.add('hostbar');
 const save=()=>{try{localStorage.setItem('airtake-s',JSON.stringify(S))}catch(e){}};
 
@@ -1403,6 +1443,7 @@ function hint(){
 setInterval(hint,600);
 $('#cHelp').onclick=()=>$('#intro').classList.add('on');
 /* ================= home ================= */
+const TTAG={"creator": ["⚡ זום בכל קטע", 350], "seller": ["⚡ ₪ על המסך", 190], "fitness": ["⚡ 0:30 ⏱", 20], "chef": ["⚡ שלב 2/5", 340], "teacher": ["⚡ נקודה 3", 260], "music": ["⚡ 96 BPM", 320]};
 const TILES=[['creator','יוצר תוכן','טיפים, ולוגים, פתיח חזק',4,'<rect x="3" y="7" width="13" height="10" rx="2"/><path d="M16 11l5-3v8l-5-3"/>'],
  ['seller','מכירה בלייב','מחיר, קופון, "נמכר!"',150,'<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8" r="1.5"/>'],
  ['fitness','אימון','טיימר וסטים בלי לעצור',52,'<path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/>'],
@@ -1435,7 +1476,7 @@ function sysLine(){const a=stream&&stream.getAudioTracks()[0],v=stream&&stream.g
 function openHome(){
   $('#ver').textContent=sysLine();homeExtras();
   hookScore();const c=curScript(),tk=c.tpl||'';
-  $('#tiles').innerHTML=TILES.map(([k,n,d,h,ic])=>`<button class="tile" data-k="${k}" style="--h:${h}" aria-pressed="${k===tk}"><svg class="art" viewBox="0 0 100 80" aria-hidden="true" style="fill:hsl(${h},90%,62%);color:hsl(${h},90%,62%)">${ART[k]}</svg><svg viewBox="0 0 24 24" aria-hidden="true">${ic}</svg><div><b>${n}</b><span>${d}</span></div></button>`).join('');
+  $('#tiles').innerHTML=TILES.map(([k,n,d,h,ic])=>`<button class="tile" data-k="${k}" style="--h:${h};--h2:${TTAG[k][1]}" aria-pressed="${k===tk}"><i class="tic"><svg viewBox="0 0 24 24" aria-hidden="true">${ic}</svg></i><div><b>${n}</b><span>${d}</span></div><em class="ttag">${TTAG[k][0]}</em></button>`).join('');
   $('#hsName').textContent=c.name||'ללא שם';
   const body=(c.text||'').split('\n').filter(l=>l.trim()&&!/^\s*[#$%]/.test(l)).join(' ');
   $('#hsText').textContent=body||'עוד אין טקסט. לחצו כדי לכתוב.';
