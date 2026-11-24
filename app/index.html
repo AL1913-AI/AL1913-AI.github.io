@@ -380,6 +380,12 @@ select{background:#0b0b10;border:1px solid var(--line);border-radius:10px;paddin
 .qa .q1 i{background:linear-gradient(145deg,#ff3d6e,#ff8a3d)!important}.qa .q2 i{background:linear-gradient(145deg,#7c5cff,#3b82f6)!important}.qa .q4 i{background:linear-gradient(145deg,#21d4c6,#3b82f6)!important}
 #bSaved::before{background:linear-gradient(145deg,#ffcf5a,#ff8a3d)!important;border-radius:14px!important}
 @media(prefers-reduced-motion:reduce){.hph img,.hfb,.hwv b{animation:none!important}}
+#bDown{color:inherit}
+.hq,#hHelp{width:44px!important;height:44px!important}
+.chip,#cMic,#cLight,#cHelp{min-height:40px}
+.home .modes button{min-height:46px}
+.score small{font-size:10px!important}
+.ttag{font-size:12px!important}
 </style>
 </head>
 <body>
@@ -433,7 +439,7 @@ select{background:#0b0b10;border:1px solid var(--line);border-radius:10px;paddin
   <div id="toast"></div>
   <div id="count"></div>
   <nav class="bar">
-    <button class="ib" id="bScript" aria-label="תסריט והגדרות"><svg viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5z"/><path d="M9 12h6M9 16h6"/></svg></button>
+    <button class="ib" id="bScript" aria-label="מסך הבית"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg></button>
     <button class="ib" id="bHide" aria-label="הסתר או הצג טלפרומפטר"><svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
     <button id="recb" aria-label="הקלטה"><i></i></button>
     <button class="ib" id="bPlay" aria-label="גלילה או לופ"><svg viewBox="0 0 24 24" id="playIco"><path d="M8 5v14l11-7z"/></svg></button>
@@ -532,7 +538,7 @@ select{background:#0b0b10;border:1px solid var(--line);border-radius:10px;paddin
 
       <section class="hero2" aria-label="סטודיו">
         <video id="hPrev" muted playsinline autoplay aria-hidden="true"></video>
-        <div class="hph" aria-hidden="true"><img src="https://images.unsplash.com/photo-1662850886700-4ec19bd30d11?auto=format&fit=crop&crop=faces&w=800&h=720&q=78" alt="" loading="lazy" onerror="this.remove()"><div class="hfb"><i></i><i></i><i></i><i></i><em>פנים ✓ במרכז</em></div><div class="hwv"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div></div>
+        <div class="hph" aria-hidden="true"><img src="https://images.unsplash.com/photo-1662850886700-4ec19bd30d11?auto=format&fit=crop&crop=faces&w=800&h=720&q=78" alt="" loading="lazy" onerror="this.remove()"><div class="hfb"><i></i><i></i><i></i><i></i><em>דוגמה · ככה זה ייראה</em></div><div class="hwv"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div></div>
         <div class="hshade"></div>
         <div class="hpills"><span id="pCam"><i></i>מצלמה</span><span id="pMic"><i></i>מיקרופון</span><span id="pRoom"></span></div>
         <button class="hscript" id="hScript">
@@ -589,6 +595,7 @@ select{background:#0b0b10;border:1px solid var(--line);border-radius:10px;paddin
     <div id="rCode"><input id="rCodeIn" inputmode="numeric" maxlength="6" placeholder="קוד" class="name" aria-label="קוד מהטלפון המצלם"><button class="go" id="rJoin" style="width:auto;margin:0;padding:0 22px">חיבור</button></div>
     <p class="rinfo" id="rInfo">מקלידים את הקוד שמופיע בטלפון המצלם</p>
     <button id="rBig">אקשן</button>
+    <button class="sec" id="rExit" style="margin-top:14px">יציאה מהשלט</button>
     <div class="rgrid" id="rGrid"></div>
   </div>
   <div class="sheet" id="intro" role="dialog" aria-modal="true" aria-labelledby="introH">
@@ -599,7 +606,7 @@ select{background:#0b0b10;border:1px solid var(--line);border-radius:10px;paddin
       <h2 class="secth">ככה מצלמים</h2>
       <ol class="steps">
         <li><b>מעמידים את הטלפון</b><span>על משהו יציב, במרחק יד, מצלמה קדמית. הטקסט שלכם מופיע למעלה, ליד העדשה, ככה המבט נשאר למצלמה.</span></li>
-        <li><b>אומרים "אקשן"</b><span>או לוחצים על העיגול האדום. ספירה 3‑2‑1 ומתחילים.</span></li>
+        <li><b>לוחצים על העיגול האדום</b><span>ספירה 3‑2‑1 ומתחילים. אפשר גם לומר "אקשן" אם פקודות הקול דלוקות.</span></li>
         <li><b>מדברים</b><span>הטקסט רץ לבד בזמן שאתם מדברים ומחכה כשאתם עוצרים. כותרות ומחירים קופצים לבד בכל קטע.</span></li>
         <li><b>מסיימים</b><span>כף יד על המצלמה, או פשוט מסיימים את הטקסט ושותקים רגע. הסרטון נשמר מוכן לטיקטוק או לרילס.</span></li>
       </ol>
@@ -622,7 +629,7 @@ select{background:#0b0b10;border:1px solid var(--line);border-radius:10px;paddin
   </div>
 
   <div class="sheet" id="result" role="dialog" aria-modal="true" aria-label="הטייקים">
-    <div class="panel">
+    <div class="panel"><button class="x2" id="resX" aria-label="סגירה וחזרה לבית">✕</button>
       <h1>הטייק מוכן</h1>
       <p class="lead" id="rinfo"></p>
       <video id="rv" controls playsinline></video>
@@ -633,6 +640,7 @@ select{background:#0b0b10;border:1px solid var(--line);border-radius:10px;paddin
       <button class="sec" id="bShare">שמירה לתמונות / שיתוף</button>
       <a class="sec" id="bDown">הורדת הקובץ</a>
       <button class="sec" id="bAgain">טייק נוסף</button>
+      <button class="sec" id="bResHome">חזרה לבית</button>
     </div>
   </div>
 </div>
@@ -1111,6 +1119,7 @@ function setClean(v){$('#app').classList.toggle('clean',v);if(v)toast('פיד נ
 $('#app').addEventListener('click',e=>{if($('#app').classList.contains('clean')&&!e.target.closest('.sheet')){setClean(false)}},true);
 function setPlay(v){playing=v;$('#playIco').innerHTML=v?'<path d="M8 5v14M16 5v14"/>':'<path d="M8 5v14l11-7z"/>'}
 function setMode(m){
+  if((rec||counting)&&m!==S.mode){toast('אי אפשר להחליף מצב באמצע טייק');return}
   S.mode=m;save();$('#app').classList.toggle('jam',m==='jam');$('#app').classList.toggle('live',m==='live');if(m!=='live')setClean(false);$('#mTalk').setAttribute('aria-pressed',m==='talk');$('#mJam').setAttribute('aria-pressed',m==='jam');$('#mLive').setAttribute('aria-pressed',m==='live');
   prom.classList.toggle('hide',m==='jam');
   $('#playIco').innerHTML=m==='jam'?'<circle cx="12" cy="12" r="7"/><path d="M12 5v3M19 12h-3"/>':playing?'<path d="M8 5v14M16 5v14"/>':'<path d="M8 5v14l11-7z"/>';
@@ -1225,6 +1234,7 @@ function addTake(b,meta={}){
   if(meta.silent)setTimeout(()=>toast('שימו לב: הטייק נשמר בלי סאונד. סגרו את Safari ופתחו שוב'),400);
   const ext=/mp4/.test(b.type)?'mp4':'webm',name='airtake-'+new Date(meta.at||Date.now()).toISOString().slice(0,16).replace(/[:T]/g,'-')+'-'+(takes.length+1)+'.'+ext;
   if(!meta.at&&!meta.recovered)bumpStats(meta.dur??Math.round((Date.now()-recT0)/1000));
+  try{const sb=$('#bSaved');sb.hidden=false;sb.textContent='טייקים שמורים ('+(takes.length+1)+')'}catch(e){}
   takes.push({b,url:URL.createObjectURL(b),name,dur:meta.dur??Math.round((Date.now()-recT0)/1000),coach:meta.coach,rec:meta.recovered});showTake(takes.length-1);$('#result').classList.add('on');
 }
 /* ================= take coach ================= */
@@ -1328,6 +1338,8 @@ $('#bAgain').onclick=()=>{$('#result').classList.remove('on');cueIdx=-1;setPtr(0
 /* ================= keyboard / Bluetooth clickers ================= */
 addEventListener('keydown',e=>{
   if(e.target.matches('textarea,input,select')||e.repeat)return;
+  if((e.key==='Enter'||e.key===' ')&&e.target.closest&&e.target.closest('button,a,[role=tab],summary'))return;
+  if(e.key==='Escape'){const o=[...document.querySelectorAll('.sheet.on')].pop();if(o){if(o.id==='result'||o.id==='home'){openHome()}else o.querySelector('.x2,#setX')?.click();return}}
   const k=e.key;
   if(S.mode==='jam'&&/^[1-4]$/.test(k)){hitPad(+k-1);return}
   if(S.mode==='jam'&&(k==='b'||k==='B')){beatToggle();return}
@@ -1382,7 +1394,7 @@ teacher:['talk',`# שקף 1/3: הבעיה
 כתבו עכשיו פתיח של משפט אחד לסרטון הבא שלכם.`],
 music:['jam',`# ג'אם
 תגידו "ג'אם", תתופפו באוויר, ו"לופ" כדי שהקצב יחזור לבד.`]};
-$('#tpl').onchange=()=>{const t=TPL[$('#tpl').value];if(!t)return;$('#script').value=t[1];S.script=t[1];S.mode=t[0];curScript().text=t[1];save();hookScore();toast('התבנית נטענה')};
+$('#tpl').onchange=()=>{const t=TPL[$('#tpl').value];if(!t)return;if($('#script').value.trim()&&$('#script').value!==t[1]&&!confirm('להחליף את הטקסט הנוכחי בתבנית? הטקסט הקיים יימחק.')){$('#tpl').value='';return}$('#script').value=t[1];S.script=t[1];S.mode=t[0];curScript().text=t[1];save();hookScore();toast('התבנית נטענה')};
 /* ---- tabs ---- */
 document.querySelector('.tabs').onclick=e=>{const b=e.target.closest('[data-t]');if(!b)return;
   document.querySelectorAll('.tabs [data-t]').forEach(x=>x.setAttribute('aria-selected',x===b));
@@ -1412,6 +1424,10 @@ function readSetup(){
 $('#script').oninput=()=>{S.script=$('#script').value;curScript().text=S.script;save();hookScore()};
 $('#bpm').oninput=()=>$('#bpmV').textContent=$('#bpm').value;
 $('#bScript').onclick=()=>openHome();
+$('#resX').onclick=()=>{$('#result').classList.remove('on');openHome()};
+$('#bResHome').onclick=()=>{$('#result').classList.remove('on');openHome()};
+$('#rExit').onclick=()=>{try{rConn?.close();rPeer?.destroy()}catch(e){}history.replaceState(null,'',location.pathname+location.search);document.documentElement.classList.remove('remote');location.reload()};
+addEventListener('hashchange',()=>{const m=location.hash.match(/remote-(\d{6})/);if(m)startRemote(m[1])});
 $('#bGo').onclick=async()=>{
   readSetup();$('#setup').classList.remove('on');$('#home').classList.remove('on');initAudio();applyRoom();applyLook();parse();labelPads();setMode(S.mode);
   if(!stream)await startCam();else updUI();
@@ -1435,7 +1451,7 @@ function hint(){
   const jam=S.mode==='jam',live=S.mode==='live',voice=srOn;let t;
   if(counting)t='מתכוננים…';
   else if(rec)t=jam?'מתופפים בצדדים · כף יד על המצלמה = קאט':live?'"מחיר" · "קופון" · "נמכר" · "תודה" · "סיום" לסיום':(voicePaused||!srOn)?'דברו, הטקסט רץ איתכם · נפנוף ימינה = הבא · יד על המצלמה = קאט':'דברו מהטקסט · "הבא" לקטע הבא · "קאט" לסיום';
-  else t=jam?'לחצו על האדום כדי להקליט את הג\'אם':live?'לחצו על האדום כדי להתחיל לייב · העין = פיד נקי לשידור':room().tip+' · לחצו על האדום או אמרו "אקשן"';
+  else t=jam?'לחצו על האדום כדי להקליט את הג\'אם':live?'לחצו על האדום כדי להתחיל לייב · העין = פיד נקי לשידור':room().tip+(S.voiceCmd?' · לחצו על האדום או אמרו "אקשן"':' · לחצו על העיגול האדום כדי להתחיל');
   if(!voice&&!counting&&!rec&&!IOS)t+=' · הקול כבוי, אפשר בכפתורים';
   $('#hintT').textContent=t;
   [['#bScript','תסריט'],['#bHide',live?'פיד נקי':'טקסט'],['#recb',rec?'עצירה':'הקלטה'],['#bPlay',jam?'לופ':'גלילה'],['#bFlip','מצלמה']].forEach(([id,l])=>$(id).dataset.l=l);
