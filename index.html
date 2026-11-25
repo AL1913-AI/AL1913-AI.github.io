@@ -163,6 +163,13 @@ summary::-webkit-details-marker{display:none}
 summary:after{content:"+";font-size:22px;line-height:1;color:var(--mut)}
 details[open] summary:after{content:"–"}
 details p{color:var(--mut);margin-top:10px}
+
+/* video */
+const V=$('vid');
+function setVid(){const src=L==='he'?'media/web-he.mp4':'media/web-en.mp4';if(!V.currentSrc.endsWith(src)){V.poster=L==='he'?'media/poster-he.jpg':'media/poster-en.jpg';V.src=src;V.load();V.play().catch(()=>{})}}
+new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){setVid();V.play().catch(()=>{})}else V.pause()}),{threshold:.35}).observe(V);
+$('snd').onclick=()=>{V.muted=false;V.currentTime=0;V.play().catch(()=>{});$('snd').classList.add('off')};
+V.onclick=()=>{V.muted=!V.muted;$('snd').classList.toggle('off',!V.muted)};
 /* form */
 form{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:24px}
 input,select{width:100%;min-height:54px;background:#0a0a11;border:1px solid #ffffff1f;color:var(--txt);border-radius:14px;padding:0 16px;font:16px Rubik,system-ui,sans-serif}
@@ -174,6 +181,23 @@ footer{padding:50px 0 110px;color:var(--mut);font-size:14px;text-align:center}
 .sticky{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:30;display:none;gap:8px;transform:translateY(160%);transition:.35s}
 .sticky.on{transform:none}
 .sticky .btn{flex:1;min-height:52px;font-size:16px}
+
+.e3{width:76px;height:76px;object-fit:contain;filter:drop-shadow(0 12px 16px rgba(0,0,0,.5))}
+.v-palm .e3{animation:palm 2.6s ease-in-out infinite}.v-wave .e3{animation:wv 1.8s ease-in-out infinite;transform-origin:70% 90%}.v-remote .e3{animation:bz 2.2s infinite}
+.v-voice .mic{position:absolute;width:54px;height:54px;top:8px;inset-inline-end:10px;animation:bob 3s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-6px) rotate(4deg)}}
+img.ic{width:46px;height:46px;object-fit:contain;display:block;margin-bottom:12px;filter:drop-shadow(0 8px 10px rgba(0,0,0,.45));animation:bob 3.4s ease-in-out infinite}
+img.re{width:58px;height:58px;object-fit:contain;filter:drop-shadow(0 10px 12px rgba(0,0,0,.5));animation:bob 3s ease-in-out infinite}
+img.gb{width:84px;height:84px;filter:drop-shadow(0 12px 18px rgba(0,0,0,.5));animation:bob 2.8s ease-in-out infinite}
+.mv,.bx,.room,.pc{transition:transform .25s cubic-bezier(.2,1.3,.4,1),border-color .25s}
+.mv:hover,.bx:hover,.room:hover{transform:translateY(-4px);border-color:#ffffff30}
+.watch{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.vwrap{position:relative;width:min(320px,82vw);aspect-ratio:9/16;margin:auto;border-radius:34px;overflow:hidden;border:8px solid #17171f;box-shadow:0 40px 90px #000b,0 0 80px #7b5cff40;background:#000}
+.vwrap video{width:100%;height:100%;object-fit:cover;display:block}
+.snd{white-space:nowrap;position:absolute;bottom:16px;left:50%;transform:translateX(-50%);border:0;border-radius:99px;padding:10px 18px;background:#fff;color:#000;font:800 15px Rubik,system-ui,sans-serif;display:flex;gap:8px;align-items:center;box-shadow:0 10px 30px #0008;cursor:pointer;min-height:44px}
+.snd.off{display:none}
+@media(max-width:760px){.watch{grid-template-columns:1fr;text-align:center}.watch .lead{margin-inline:auto}}
+@media(prefers-reduced-motion:reduce){img.ic,img.re,img.gb,.v-voice .mic{animation:none}}
 [data-l]{display:none}
 html[lang=he] [data-l=he],html[lang=en] [data-l=en]{display:revert}
 :focus-visible{outline:2px solid var(--c);outline-offset:3px}
@@ -227,15 +251,26 @@ html[lang=he] [data-l=he],html[lang=en] [data-l=en]{display:revert}
 <div class="tick" aria-hidden="true"><div id="tk"></div></div>
 
 <div class="wrap">
+<section id="watch">
+  <div class="watch">
+    <div><span class="kick gt" data-l="he">30 שניות</span><span class="kick gt" data-l="en">30 seconds</span>
+    <h2><span data-l="he">תראו את זה<br>בפעולה</span><span data-l="en">See it<br>in action</span></h2>
+    <p class="lead"><span data-l="he">כל מה ש-AIRTAKE עושה, בסרטון אחד קצר. תדליקו סאונד 🔊</span><span data-l="en">Everything AIRTAKE does, in one short video. Turn the sound on 🔊</span></p>
+    <a class="btn p" href="./app/"><span data-l="he">לנסות בעצמי</span><span data-l="en">Try it myself</span></a></div>
+    <div class="vwrap"><video id="vid" muted loop playsinline preload="metadata" poster="media/poster-he.jpg"><source src="media/web-he.mp4" type="video/mp4"></video>
+      <button class="snd" id="snd"><span>🔊</span><span data-l="he">להפעיל סאונד</span><span data-l="en">Sound on</span></button></div>
+  </div>
+</section>
+
 <section id="moves">
   <span class="kick gt" data-l="he">4 תנועות. זהו.</span><span class="kick gt" data-l="en">4 moves. That's it.</span>
   <h2><span data-l="he">הטלפון על החצובה.<br>אתם לא צריכים לגעת בו.</span><span data-l="en">Phone on the tripod.<br>You never touch it.</span></h2>
   <p class="lead"><span data-l="he">בלי לרוץ לטלפון אחרי כל טייק, בלי לבקש ממישהו ללחוץ, בלי לשנן טקסט.</span><span data-l="en">No running back after every take, no asking someone to press record, no memorizing.</span></p>
   <div class="moves">
-    <div class="mv" style="--h:45"><span class="k">🎤</span><div class="vis v-voice"><div class="lines"><i></i><i></i><i></i><i></i></div></div><h3><span data-l="he">מדברים</span><span data-l="en">Talk</span></h3><p><span data-l="he">הטקסט גולל לבד בקצב שלכם, ונעצר כשאתם עוצרים.</span><span data-l="en">The script scrolls at your pace and waits when you pause.</span></p></div>
-    <div class="mv" style="--h:345"><span class="k">✂</span><div class="vis v-palm"><span class="e">✋</span></div><h3><span data-l="he">כף יד</span><span data-l="en">Palm</span></h3><p><span data-l="he">מכסים את המצלמה לשנייה. הטייק נחתך ונשמר.</span><span data-l="en">Cover the lens for a second. The take is cut and saved.</span></p></div>
-    <div class="mv" style="--h:260"><span class="k">⏭</span><div class="vis v-wave"><span class="e">👋</span></div><h3><span data-l="he">נפנוף</span><span data-l="en">Wave</span></h3><p><span data-l="he">ימינה לקטע הבא, שמאלה אחורה.</span><span data-l="en">Right for the next part, left to go back.</span></p></div>
-    <div class="mv" style="--h:175"><span class="k">📡</span><div class="vis v-remote"><span class="e">📱</span></div><h3><span data-l="he">שלט</span><span data-l="en">Remote</span></h3><p><span data-l="he">סורקים QR מטלפון שני והוא הופך לשלט. חינם.</span><span data-l="en">Scan a QR with a second phone and it's a remote. Free.</span></p></div>
+    <div class="mv" style="--h:45"><span class="k">🎤</span><div class="vis v-voice"><img class="e3 mic" src="e/mic.png" alt=""><div class="lines"><i></i><i></i><i></i><i></i></div></div><h3><span data-l="he">מדברים</span><span data-l="en">Talk</span></h3><p><span data-l="he">הטקסט גולל לבד בקצב שלכם, ונעצר כשאתם עוצרים.</span><span data-l="en">The script scrolls at your pace and waits when you pause.</span></p></div>
+    <div class="mv" style="--h:345"><span class="k">✂</span><div class="vis v-palm"><img class="e3" src="e/hand.png" alt=""></div><h3><span data-l="he">כף יד</span><span data-l="en">Palm</span></h3><p><span data-l="he">מכסים את המצלמה לשנייה. הטייק נחתך ונשמר.</span><span data-l="en">Cover the lens for a second. The take is cut and saved.</span></p></div>
+    <div class="mv" style="--h:260"><span class="k">⏭</span><div class="vis v-wave"><img class="e3" src="e/wave.png" alt=""></div><h3><span data-l="he">נפנוף</span><span data-l="en">Wave</span></h3><p><span data-l="he">ימינה לקטע הבא, שמאלה אחורה.</span><span data-l="en">Right for the next part, left to go back.</span></p></div>
+    <div class="mv" style="--h:175"><span class="k">📡</span><div class="vis v-remote"><img class="e3" src="e/phone.png" alt=""></div><h3><span data-l="he">שלט</span><span data-l="en">Remote</span></h3><p><span data-l="he">סורקים QR מטלפון שני והוא הופך לשלט. חינם.</span><span data-l="en">Scan a QR with a second phone and it's a remote. Free.</span></p></div>
   </div>
 </section>
 
@@ -244,14 +279,14 @@ html[lang=he] [data-l=he],html[lang=en] [data-l=en]{display:revert}
   <h2><span data-l="he">לא רק טלפרומפטר.<br>סטודיו שלם בכיס.</span><span data-l="en">Not just a teleprompter.<br>A whole studio in your pocket.</span></h2>
   <p class="lead"><span data-l="he">כל מה שעורך, צלם ומפיק היו עושים, קורה לבד בזמן שאתם מדברים.</span><span data-l="en">Everything an editor, camera operator and producer would do happens on its own while you talk.</span></p>
   <div class="bento">
-    <div class="bx s4 hot"><span class="ic">🎬</span><h3><span data-l="he">יוצא ערוך. באמת.</span><span data-l="en">Comes out edited. Really.</span></h3><p><span data-l="he">זום אוטומטי בכל קטע, כתוביות פופ שמדגישות כל מילה, פס התקדמות, מוזיקה ותמונת שער. בסוף מקבלים גם טקסט לפוסט עם האשטגים.</span><span data-l="en">Auto punch-in every segment, pop captions that highlight each word, a progress bar, music and a cover image. You also get a ready caption with hashtags.</span></p>
+    <div class="bx s4 hot"><img class="ic" src="e/clap.png" alt=""><h3><span data-l="he">יוצא ערוך. באמת.</span><span data-l="en">Comes out edited. Really.</span></h3><p><span data-l="he">זום אוטומטי בכל קטע, כתוביות פופ שמדגישות כל מילה, פס התקדמות, מוזיקה ותמונת שער. בסוף מקבלים גם טקסט לפוסט עם האשטגים.</span><span data-l="en">Auto punch-in every segment, pop captions that highlight each word, a progress bar, music and a cover image. You also get a ready caption with hashtags.</span></p>
       <div class="chips"><span data-l="he">🔍 זום</span><span data-l="en">🔍 Zoom</span><span data-l="he">💬 כתוביות</span><span data-l="en">💬 Captions</span><span data-l="he">🎵 מוזיקה</span><span data-l="en">🎵 Music</span><span data-l="he">🖼 שער</span><span data-l="en">🖼 Cover</span><span data-l="he">#️⃣ טקסט לפוסט</span><span data-l="en">#️⃣ Caption</span></div></div>
-    <div class="bx s2 wd"><span class="ic">💡</span><h3><span data-l="he">אור ומסגרת פנים</span><span data-l="en">Light &amp; face guide</span></h3><p><span data-l="he">המסך הופך לטבעת אור, ומסגרת מראה שאתם במרכז.</span><span data-l="en">The screen becomes a ring light, and a frame keeps you centered.</span></p></div>
-    <div class="bx s3"><span class="ic">🥁</span><h3><span data-l="he">מצב ג'אם</span><span data-l="en">Jam mode</span></h3><p><span data-l="he">מתופפים באוויר מול המצלמה: פדים זוהרים על המסך, ביט ולופר בקצב.</span><span data-l="en">Drum in the air in front of the camera: glowing pads on screen, a beat and a looper in time.</span></p><div class="pads"><i></i><i></i><i></i><i></i></div></div>
-    <div class="bx s3"><span class="ic">🔴</span><h3><span data-l="he">מצב לייב</span><span data-l="en">Live mode</span></h3><p><span data-l="he">סטודיו שידור: מחיר, קופון ו"נמכר!" קופצים על המסך בדיוק כשאתם אומרים אותם.</span><span data-l="en">An on-air studio: price, coupon and "Sold!" pop up exactly when you say them.</span></p><span class="onair">ON AIR</span></div>
-    <div class="bx s2"><span class="ic">📝</span><h3><span data-l="he">תסריט מוכן</span><span data-l="en">Ready scripts</span></h3><p><span data-l="he">תבניות לכל תחום. בוחרים, מתאימים ומצלמים.</span><span data-l="en">Templates for every field. Pick, tweak, shoot.</span></p></div>
-    <div class="bx s2"><span class="ic">🔥</span><h3><span data-l="he">רצף ותוצאות</span><span data-l="en">Streaks &amp; stats</span></h3><p><span data-l="he">טייקים, דקות ורצף ימים, כדי שתמשיכו להעלות.</span><span data-l="en">Takes, minutes and a daily streak to keep you posting.</span></p></div>
-    <div class="bx s2 wd"><span class="ic">📤</span><h3><span data-l="he">ישר לרשתות</span><span data-l="en">Straight to socials</span></h3><p><span data-l="he">כפתור אחד לאינסטגרם או לטיקטוק.</span><span data-l="en">One tap to Instagram or TikTok.</span></p><div class="share"><span class="ig">IG</span><span class="tt">TT</span></div></div>
+    <div class="bx s2 wd"><img class="ic" src="e/sparkles.png" alt=""><h3><span data-l="he">אור ומסגרת פנים</span><span data-l="en">Light &amp; face guide</span></h3><p><span data-l="he">המסך הופך לטבעת אור, ומסגרת מראה שאתם במרכז.</span><span data-l="en">The screen becomes a ring light, and a frame keeps you centered.</span></p></div>
+    <div class="bx s3"><img class="ic" src="e/music.png" alt=""><h3><span data-l="he">מצב ג'אם</span><span data-l="en">Jam mode</span></h3><p><span data-l="he">מתופפים באוויר מול המצלמה: פדים זוהרים על המסך, ביט ולופר בקצב.</span><span data-l="en">Drum in the air in front of the camera: glowing pads on screen, a beat and a looper in time.</span></p><div class="pads"><i></i><i></i><i></i><i></i></div></div>
+    <div class="bx s3"><img class="ic" src="e/seller.png" alt=""><h3><span data-l="he">מצב לייב</span><span data-l="en">Live mode</span></h3><p><span data-l="he">סטודיו שידור: מחיר, קופון ו"נמכר!" קופצים על המסך בדיוק כשאתם אומרים אותם.</span><span data-l="en">An on-air studio: price, coupon and "Sold!" pop up exactly when you say them.</span></p><span class="onair">ON AIR</span></div>
+    <div class="bx s2"><img class="ic" src="e/teacher.png" alt=""><h3><span data-l="he">תסריט מוכן</span><span data-l="en">Ready scripts</span></h3><p><span data-l="he">תבניות לכל תחום. בוחרים, מתאימים ומצלמים.</span><span data-l="en">Templates for every field. Pick, tweak, shoot.</span></p></div>
+    <div class="bx s2"><img class="ic" src="e/fire.png" alt=""><h3><span data-l="he">רצף ותוצאות</span><span data-l="en">Streaks &amp; stats</span></h3><p><span data-l="he">טייקים, דקות ורצף ימים, כדי שתמשיכו להעלות.</span><span data-l="en">Takes, minutes and a daily streak to keep you posting.</span></p></div>
+    <div class="bx s2 wd"><img class="ic" src="e/rocket.png" alt=""><h3><span data-l="he">ישר לרשתות</span><span data-l="en">Straight to socials</span></h3><p><span data-l="he">כפתור אחד לאינסטגרם או לטיקטוק.</span><span data-l="en">One tap to Instagram or TikTok.</span></p><div class="share"><span class="ig">IG</span><span class="tt">TT</span></div></div>
   </div>
 </section>
 
@@ -260,12 +295,12 @@ html[lang=he] [data-l=he],html[lang=en] [data-l=en]{display:revert}
   <h2><span data-l="he">חדר לכל מה שאתם עושים</span><span data-l="en">A room for what you do</span></h2>
   <p class="lead"><span data-l="he">כל חדר יודע מה צריך להופיע על המסך, ושם את זה לבד.</span><span data-l="en">Each room knows what belongs on screen and puts it there by itself.</span></p>
   <div class="rooms">
-    <div class="room" style="--h:350"><span class="re">🎥</span><b><span data-l="he">יוצרים</span><span data-l="en">Creators</span></b><span><span data-l="he">פתיח חזק, כותרות וכתוביות פופ</span><span data-l="en">Strong hook, titles, pop captions</span></span><em><span data-l="he">⚡ זום בכל קטע</span><span data-l="en">⚡ Auto zoom</span></em></div>
-    <div class="room" style="--h:160"><span class="re">🏷️</span><b><span data-l="he">מכירות</span><span data-l="en">Selling</span></b><span><span data-l="he">מחיר וקופון קופצים בכל מוצר</span><span data-l="en">Price &amp; coupon pop per product</span></span><em><span data-l="he">⚡ ₪ על המסך</span><span data-l="en">⚡ Price on screen</span></em></div>
-    <div class="room" style="--h:40"><span class="re">💪</span><b><span data-l="he">כושר</span><span data-l="en">Fitness</span></b><span><span data-l="he">טיימר מתחיל לבד בכל תרגיל</span><span data-l="en">Timer starts per exercise</span></span><em>⚡ 0:30 ⏱</em></div>
-    <div class="room" style="--h:20"><span class="re">🍳</span><b><span data-l="he">מטבח</span><span data-l="en">Kitchen</span></b><span><span data-l="he">ידיים בבצק? נפנוף = השלב הבא</span><span data-l="en">Hands in dough? Wave = next step</span></span><em><span data-l="he">⚡ שלב 2/5</span><span data-l="en">⚡ Step 2/5</span></em></div>
-    <div class="room" style="--h:215"><span class="re">🎓</span><b><span data-l="he">הרצאה</span><span data-l="en">Teaching</span></b><span><span data-l="he">כל קטע הוא שקף עם כותרת</span><span data-l="en">Each segment is a titled slide</span></span><em><span data-l="he">⚡ נקודה 3</span><span data-l="en">⚡ Point 3</span></em></div>
-    <div class="room" style="--h:285"><span class="re">🎹</span><b><span data-l="he">ג'אם</span><span data-l="en">Jam</span></b><span><span data-l="he">"ביט", מתופפים בצדדים, "לופ"</span><span data-l="en">"Beat", drum the sides, "loop"</span></span><em>⚡ 96 BPM</em></div>
+    <div class="room" style="--h:350"><img class="re" src="e/creator.png" alt=""><b><span data-l="he">יוצרים</span><span data-l="en">Creators</span></b><span><span data-l="he">פתיח חזק, כותרות וכתוביות פופ</span><span data-l="en">Strong hook, titles, pop captions</span></span><em><span data-l="he">⚡ זום בכל קטע</span><span data-l="en">⚡ Auto zoom</span></em></div>
+    <div class="room" style="--h:160"><img class="re" src="e/seller.png" alt=""><b><span data-l="he">מכירות</span><span data-l="en">Selling</span></b><span><span data-l="he">מחיר וקופון קופצים בכל מוצר</span><span data-l="en">Price &amp; coupon pop per product</span></span><em><span data-l="he">⚡ ₪ על המסך</span><span data-l="en">⚡ Price on screen</span></em></div>
+    <div class="room" style="--h:40"><img class="re" src="e/fitness.png" alt=""><b><span data-l="he">כושר</span><span data-l="en">Fitness</span></b><span><span data-l="he">טיימר מתחיל לבד בכל תרגיל</span><span data-l="en">Timer starts per exercise</span></span><em>⚡ 0:30 ⏱</em></div>
+    <div class="room" style="--h:20"><img class="re" src="e/chef.png" alt=""><b><span data-l="he">מטבח</span><span data-l="en">Kitchen</span></b><span><span data-l="he">ידיים בבצק? נפנוף = השלב הבא</span><span data-l="en">Hands in dough? Wave = next step</span></span><em><span data-l="he">⚡ שלב 2/5</span><span data-l="en">⚡ Step 2/5</span></em></div>
+    <div class="room" style="--h:215"><img class="re" src="e/teacher.png" alt=""><b><span data-l="he">הרצאה</span><span data-l="en">Teaching</span></b><span><span data-l="he">כל קטע הוא שקף עם כותרת</span><span data-l="en">Each segment is a titled slide</span></span><em><span data-l="he">⚡ נקודה 3</span><span data-l="en">⚡ Point 3</span></em></div>
+    <div class="room" style="--h:285"><img class="re" src="e/music.png" alt=""><b><span data-l="he">ג'אם</span><span data-l="en">Jam</span></b><span><span data-l="he">"ביט", מתופפים בצדדים, "לופ"</span><span data-l="en">"Beat", drum the sides, "loop"</span></span><em>⚡ 96 BPM</em></div>
   </div>
 </section>
 
@@ -283,7 +318,7 @@ html[lang=he] [data-l=he],html[lang=en] [data-l=en]{display:revert}
 <section id="price">
   <span class="kick gt" data-l="he">מחיר</span><span class="kick gt" data-l="en">Pricing</span>
   <h2><span data-l="he">עכשיו זה הזמן להיכנס</span><span data-l="en">Now is the time to get in</span></h2>
-  <div class="gift"><div class="gb">🎁</div><h3><span data-l="he">מי שנכנס בבטא, Pro חינם. לכל החיים.</span><span data-l="en">Join in beta, get Pro free. For life.</span></h3><p><span data-l="he">רק בתקופת הבטא, בתמורה לפידבק כן.</span><span data-l="en">Beta period only, in exchange for honest feedback.</span></p></div>
+  <div class="gift"><img class="gb" src="e/party.png" alt=""><h3><span data-l="he">מי שנכנס בבטא, Pro חינם. לכל החיים.</span><span data-l="en">Join in beta, get Pro free. For life.</span></h3><p><span data-l="he">רק בתקופת הבטא, בתמורה לפידבק כן.</span><span data-l="en">Beta period only, in exchange for honest feedback.</span></p></div>
   <div class="price">
     <div class="pc"><h3><span data-l="he">חינם</span><span data-l="en">Free</span></h3><div class="amt">₪0</div><ul><li><span data-l="he">כל השליטה בלי ידיים</span><span data-l="en">All hands-free control</span></li><li><span data-l="he">2 חדרים</span><span data-l="en">2 rooms</span></li><li><span data-l="he">סימן מים קטן</span><span data-l="en">Small watermark</span></li></ul></div>
     <div class="pc top"><h3>Pro</h3><div class="amt">₪49<small><span data-l="he"> / חודש</span><span data-l="en"> / mo</span></small></div><ul><li><span data-l="he">או ₪390 לשנה</span><span data-l="en">or ₪390 / year</span></li><li><span data-l="he">בלי סימן מים</span><span data-l="en">No watermark</span></li><li><span data-l="he">כל החדרים, הלוקים והמוזיקה</span><span data-l="en">All rooms, looks &amp; music</span></li><li><span data-l="he">שער, טקסט לפוסט ושיתוף ישיר</span><span data-l="en">Cover, caption &amp; direct share</span></li></ul></div>
@@ -340,7 +375,7 @@ function setL(l){L=l;const h=document.documentElement;h.lang=l;h.dir=l==='he'?'r
  const t=T[l].tick.map(x=>`<span>${x}</span>`).join('');$('tk').innerHTML=t+t;
  $('pl').innerHTML=T[l].lines.map(x=>`<p>${x}</p>`).join('');
  try{localStorage.setItem('at-l',l)}catch(e){}
- clearTimeout(timer);step=0;run()}
+ clearTimeout(timer);step=0;run();try{setVid()}catch(e){}}
 /* phone demo loop */
 let step=0;
 function show(el,on){$(el).classList.toggle('on',on)}
