@@ -1577,6 +1577,12 @@ $('#rGrid').onclick=e=>{const b=e.target.closest('[data-c]');if(b)rSend(b.datase
 fillSetup();parse();labelPads();setMode(S.mode);hint();
 if(/^#remote/.test(location.hash))startRemote(location.hash.replace(/\D/g,''));
 else{let seen=null;try{seen=localStorage.getItem('airtake-intro')}catch(e){}openHome();if(!seen)$('#intro').classList.add('on')}
+/* ===== anonymous counter ===== */
+const AT_U='https://ijhiwzahbamjlhrzxelg.supabase.co/rest/v1/rpc/airtake_track',AT_K='sb_publishable_mIbP1sErWH3NyZK6V-1otA_GWwzLWrF';
+function atSid(){try{let s=sessionStorage.getItem('at-sid');if(!s){s=Math.random().toString(36).slice(2,12);sessionStorage.setItem('at-sid',s)}return s}catch(e){return null}}
+function atSrc(){try{const q=new URLSearchParams(location.search);const u=q.get('utm_source');if(u)return u.slice(0,60);const r=document.referrer?new URL(document.referrer).hostname:'';return(r&&r!==location.hostname?r:'direct').slice(0,60)}catch(e){return null}}
+function track(ev){try{if(navigator.doNotTrack==='1')return;fetch(AT_U,{method:'POST',keepalive:true,headers:{'apikey':AT_K,'Content-Type':'application/json'},body:JSON.stringify({p_ev:ev,p_lang:(document.documentElement.lang||'').slice(0,5),p_src:atSrc(),p_sid:atSid()})}).catch(()=>{})}catch(e){}}
+track('app_open');
 /* ===== FX layer v14 ===== */
 (function(){
 const E={creator:'creator',seller:'seller',fitness:'fitness',chef:'chef',teacher:'teacher',music:'music'};
@@ -1627,8 +1633,9 @@ const cnt=document.getElementById('count');if(cnt){new MutationObserver(()=>{con
 /* wrap actions */
 const _stop=stopRec;stopRec=function(d){const was=!!rec;const r=_stop.apply(this,arguments);if(was&&!d){try{S2.cut()}catch(_){}buzz(30)}return r};
 const _jump=jumpCue;jumpCue=function(){const r=_jump.apply(this,arguments);try{S2.next()}catch(_){}return r};
-const _add=addTake;addTake=function(b,meta){const r=_add.apply(this,arguments);if(!(meta&&(meta.at||meta.recovered))){const n=(S.st&&S.st.n)||0;
+const _add=addTake;addTake=function(b,meta){const r=_add.apply(this,arguments);if(!(meta&&(meta.at||meta.recovered))){track('take_saved');const n=(S.st&&S.st.n)||0;
   setTimeout(()=>{try{if(n<=1){S2.party();confetti(220);fxToast('הטייק הראשון שלך! 🎉','party')}else if(n%10===0){S2.party();confetti(180);fxToast(`${n} טייקים! אלוף 🔥`,'fire')}else{S2.saved();confetti(90);fxToast('הטייק נשמר ✓','clap')}}catch(_){}},250)}return r};
+const _ts=toSocial;toSocial=function(w){try{track(/tik/i.test(String(w))?'share_tt':'share_ig')}catch(_){}return _ts.apply(this,arguments)};
 const _mode=setMode;setMode=function(m){const prev=S.mode;const r=_mode.apply(this,arguments);if(S.mode!==prev){try{S2.on()}catch(_){}}return r};
 })();
 

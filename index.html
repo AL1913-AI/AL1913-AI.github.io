@@ -164,11 +164,18 @@ summary:after{content:"+";font-size:22px;line-height:1;color:var(--mut)}
 details[open] summary:after{content:"–"}
 details p{color:var(--mut);margin-top:10px}
 
+/* anonymous counter: event type, language, source; no names, no IP stored */
+const AT_U='https://ijhiwzahbamjlhrzxelg.supabase.co/rest/v1/rpc/airtake_track',AT_K='sb_publishable_mIbP1sErWH3NyZK6V-1otA_GWwzLWrF';
+function atSid(){try{let s=sessionStorage.getItem('at-sid');if(!s){s=Math.random().toString(36).slice(2,12);sessionStorage.setItem('at-sid',s)}return s}catch(e){return null}}
+function atSrc(){try{const q=new URLSearchParams(location.search);const u=q.get('utm_source');if(u)return u.slice(0,60);const r=document.referrer?new URL(document.referrer).hostname:'';return(r&&r!==location.hostname?r:'direct').slice(0,60)}catch(e){return null}}
+function track(ev){try{if(navigator.doNotTrack==='1')return;fetch(AT_U,{method:'POST',keepalive:true,headers:{'apikey':AT_K,'Content-Type':'application/json'},body:JSON.stringify({p_ev:ev,p_lang:(document.documentElement.lang||'').slice(0,5),p_src:atSrc(),p_sid:atSid()})}).catch(()=>{})}catch(e){}}
+track('land_view');
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="./app"]');if(a)track('try_click')},true);
 /* video */
 const V=$('vid');
 function setVid(){const src=L==='he'?'media/web-he.mp4':'media/web-en.mp4';if(!V.currentSrc.endsWith(src)){V.poster=L==='he'?'media/poster-he.jpg':'media/poster-en.jpg';V.src=src;V.load();V.play().catch(()=>{})}}
 new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){setVid();V.play().catch(()=>{})}else V.pause()}),{threshold:.35}).observe(V);
-$('snd').onclick=()=>{V.muted=false;V.currentTime=0;V.play().catch(()=>{});$('snd').classList.add('off')};
+$('snd').onclick=()=>{track('video_sound');V.muted=false;V.currentTime=0;V.play().catch(()=>{});$('snd').classList.add('off')};
 V.onclick=()=>{V.muted=!V.muted;$('snd').classList.toggle('off',!V.muted)};
 /* form */
 form{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:24px}
@@ -401,7 +408,7 @@ const jo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)$('stk'
 $('f').onsubmit=e=>{e.preventDefault();const d=new FormData(e.target);const c=(d.get('contact')||'').trim();
  if(!/@.+\./.test(c)&&c.replace(/\D/g,'').length<9){alert(T[L].bad);return}
  const body=`Name: ${d.get('name')}\nContact: ${d.get('contact')}\nRole: ${d.get('role')||'-'}\nLang: ${L}`;
- location.href='mailto:asaflevi320@gmail.com?subject='+encodeURIComponent('AIRTAKE beta signup')+'&body='+encodeURIComponent(body);
+ track('signup_click');location.href='mailto:asaflevi320@gmail.com?subject='+encodeURIComponent('AIRTAKE beta signup')+'&body='+encodeURIComponent(body);
  $('ok').style.display='block'};
 </script>
 </body>
